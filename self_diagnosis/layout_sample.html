@@ -876,7 +876,12 @@ function searchIt(params) {
       <div class="top-area">
         <h1 class="title">성인 기초 문해력 자가진단 시스템</h1>
         <div class="step-area">
-
+          <div class="item-list">
+            <span class="item on">1</span><!-- 진행이 완료된 단계의 경우 클래스 on -->
+            <span class="item active">2</span><!-- 현재 진행 중인 단계의 경우 클래스 active -->
+            <span class="item">3</span>
+            <span class="item">4</span>
+          </div>
         </div>
       </div>
       <div class="section-area">
@@ -885,7 +890,10 @@ function searchIt(params) {
         </div>
         <div class="contents-area">
           <div class="example-area">
-            <img src="../assets/images/self_diagnosis/img_sample02.png" alt="샘플 이미지">
+            <div class="example-inner">
+              <!-- <img src="../assets/images/self_diagnosis/img_sample01.png" alt="샘플 이미지"> -->
+              <img src="../assets/images/self_diagnosis/img_sample02.png" alt="샘플 이미지">
+            </div>
           </div>
           <div class="question-area">
             <div class="itme-area">
@@ -893,15 +901,35 @@ function searchIt(params) {
                 질문 영역 질문 영역 질문 영역 질문 영역 질문 영역 질문 영역 질문 영역
               </div>
               <div class="item-answer">
-                <span class="answer">답: </span>
-                답변 영역 <br>
-                <input type="text">
-                <span class="spacing">년</span>
-                <input type="text" style="width: 50px;">
-                <span class="spacing">월</span>
-                <input type="text" style="width: 50px;">
-                <span class="spacing">일</span>
-                <br>
+                <div class="form-answer">
+                  <span class="answer">답:</span>
+                  <input type="text">
+                  <span class="spacing">년</span>
+                  <input type="text">
+                  <span class="spacing">월</span>
+                  <input type="text">
+                  <span class="spacing">일</span>
+                </div>
+
+                <div class="form-answer">
+                  <span class="answer">답:</span>
+                  <input type="text">
+                  <span class="spacing">년</span>
+                  <select name="" id="">
+                    <option value="">1</option>
+                    <option value="">2</option>
+                    <option value="">3</option>
+                    <option value="">4</option>
+                  </select>
+                  <span class="spacing">월</span>
+                  <select name="" id="">
+                    <option value="">1</option>
+                    <option value="">2</option>
+                    <option value="">3</option>
+                    <option value="">4</option>
+                  </select>
+                  <span class="spacing">일</span>
+                </div>
                 <span class="form-box">
                   <input type="radio" name="sample-radio" id="sample-radio01">
                   <label for="sample-radio01">예</label>
@@ -914,8 +942,66 @@ function searchIt(params) {
                   <input type="checkbox" name="sample-checkbox" id="sample-checkbox">
                   <label for="sample-checkbox">1번 </label>
                 </span>
+
+
+                <div class="form-group column">
+                  <span class="form-box">
+                    <input type="radio" name="sample-radio" id="sample-radio01">
+                    <label for="sample-radio01">예</label>
+                  </span>
+                  <span class="form-box">
+                    <input type="radio" name="sample-radio" id="sample-radio02">
+                    <label for="sample-radio02">아니오</label>
+                  </span>
+                </div>
+                <div class="form-group in3">
+                  <input type="text">
+                  <input type="text">
+                  <select name="" id="">
+                    <option value="">1</option>
+                    <option value="">2</option>
+                    <option value="">3</option>
+                    <option value="">4</option>
+                  </select>
+                </div>
+                <div class="form-group in2">
+                  <input type="text">
+                  <input type="text">
+                </div>
+
               </div>
             </div>
+
+
+            <table class="table-style">
+              <caption>sfdsdfs</caption>
+              <colgroup>
+                <col style="width: 10%;">
+                <col style="width: 10%;">
+                <col>
+              </colgroup>
+              <thead>
+                <tr>
+                  <th scope="col">sfdsdfs</th>
+                  <th scope="col">sfdsdfs</th>
+                  <th scope="col">sfdsdfs</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">sfdsdfs</th>
+                  <th scope="row">sfdsdfs</th>
+                  <td><input type="text"></td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th scope="row">sfdsdfs</th>
+                  <th scope="row">sfdsdfs</th>
+                  <td>sfdsdfs</td>
+                </tr>
+              </tfoot>
+            </table>
 
           </div>
         </div>

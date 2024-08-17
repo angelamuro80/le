@@ -11,41 +11,49 @@
 /* 추가 css */
 @import url('font.css');
 
-
-#self-diagnosis {
-  display: none;
-  position: fixed;
-  left: 0;
-  top: 0;
-  z-index: 5002;
-  width: 100vw;
-  height:  100vh;
-  font-family: 'Pretendard-Regular';
-  font-size: 16px;
-  font-weight: 400;
-  color: #202020;
-}
-.self-diagnosis-active #self-diagnosis {
-  display: block;
-}
-.self-diagnosis input[type="text"] {
-  width: 120px;
+/* input */
+.self-diagnosis input[type="text"],.self-diagnosis select {
+  width: 100%;
   height: 40px;
   padding: 8px;
+  margin: 0;
   font-size: 18px;
   border: 1px solid #B0B0B0;
   border-radius: 4px;
   background-color: #fff;
   box-sizing: border-box;
 }
+.self-diagnosis .form-group {
+  display: flex;
+  align-items: center;
+}
+.self-diagnosis .form-group.column {
+  flex-direction: column;
+  align-items: start;
+}
+.self-diagnosis .form-group.in2,.self-diagnosis .form-group.in3 {
+  justify-content: space-between;
+}
+.self-diagnosis .form-group.in2 input[type="text"],.self-diagnosis .form-group.in2 select {
+  width: calc(50% - 4px);
+}
+.self-diagnosis .form-group.in3 input[type="text"],.self-diagnosis .form-group.in3 select {
+  width: calc((100% / 3) - (16px / 3));
+}
+.self-diagnosis .form-group .form-box + .form-box {
+  margin-left: 16px;
+}
+.self-diagnosis .form-group.column .form-box + .form-box {
+  margin: 12px 0 0 0;
+}
 .self-diagnosis .form-box {
-  position:relative;
-  display:inline-block;
-  vertical-align:middle;
-  overflow:hidden;
+  position: relative;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
 }
 .self-diagnosis .form-box input {
-  position:absolute;
+  position: absolute;
   left:-1px;
   top:-1px;
   width:1px;
@@ -53,13 +61,13 @@
   opacity:0;
 }
 .self-diagnosis .form-box label {
-  display:inline-block;
-  padding-left:34px;
+  display: inline-block;
+  padding-left: 34px;
   line-height: 30px;
 }
 .self-diagnosis .form-box label::before,.self-diagnosis .form-box label::after {
-  position:absolute;
-  display:inline-block;
+  position: absolute;
+  display: inline-block;
   content:'';
   box-sizing:border-box;
 }
@@ -101,7 +109,13 @@
   border-radius: 100%;
   background-color: #007CFF;
 }
+.self-diagnosis .form-answer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 .self-diagnosis .spacing {
+  flex-shrink: 0;
   display: inline-block;
   margin: 0 10px 0 8px;
 }
@@ -116,22 +130,81 @@
   background-color: #000;
   opacity: 0.8;
 }
+/* talbe */
+.table-style {
+  background-color: #fff;
+}
+.table-style thead {
+  background-color: #E0E0E0;
+}
+.table-style thead th {
+  font-weight: 600;
+  color: #303030;
+}
+.table-style thead tr:last-child th {
+  border-bottom: none;
+}
+.table-style th,.table-style td {
+  padding: 8px;
+  font-weight: 400;
+  text-align: center;
+  border: 1px solid #B0B0B0;
+}
+/*  */
+.text-left {
+  text-align: left !important;
+}
+.text-center {
+  text-align: center !important;
+}
+.text-right {
+  text-align: right !important;
+}
+
+/* layout */
+.self-diagnosis-active {
+  overflow: hidden !important;
+}
+#self-diagnosis {
+  display: none;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 5002;
+  width: 100vw;
+  height:  100vh;
+  font-family: 'Pretendard-Regular';
+  font-size: 16px;
+  font-weight: 400;
+  color: #303030;
+}
+.self-diagnosis-active #self-diagnosis {
+  display: block;
+}
 #self-diagnosis .inner-area {
   position: absolute;
   left: 50%;
   top: 50%;
-  min-width: 1000px;
-  /* min-height:  740px; */
-  min-height:  300px;
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: column;
+  flex-grow: 0;
+  max-width: 1000px;
+  width: 1000px;
+  max-height:  90vh;
+  height:  740px;
   border-radius: 24px;
   transform: translate(-50%, -50%);
   overflow: hidden;
 }
 #self-diagnosis .top-area {
+  position: relative;
+  z-index: 11;
   display: flex;
+  flex-shrink: 0;
   justify-content: space-between;
   align-items: center;
-  height: 64px;
+  flex-basis: 64px;
   padding: 0 92px 0 24px;
   background-color: #003E80;
   box-sizing: border-box;
@@ -144,17 +217,57 @@
   color: #fff;
   vertical-align: middle;
 }
-#self-diagnosis .top-area .step-area {
-
+#self-diagnosis .top-area .step-area .item-list {
+  display: flex;
+  align-items: center;
 }
-#self-diagnosis .top-area .step-area {
-
+#self-diagnosis .top-area .step-area .item-list .item {
+  width: 20px;
+  height: 20px;
+  font-size: 1px;
+  line-height: 1px;
+  color: transparent;
+  border-radius: 100%;
+  background-color: #4c78a6;
+  overflow: hidden;
 }
-#self-diagnosis .section-area {
-  padding: 24px;
+#self-diagnosis .top-area .step-area .item-list .item.on, #self-diagnosis .top-area .step-area .item-list .item.active {
   background-color: #fff;
 }
+#self-diagnosis .top-area .step-area .item-list .item::before {
+  width: 1px;
+  height: 1px;
+  font-size: 1px;
+  line-height: 1px;
+  color: transparent;
+  content: '남아 있는 단계';
+  overflow: hidden;
+}
+#self-diagnosis .top-area .step-area .item-list .item.on::before {
+  content: '완료된 단계';
+}
+#self-diagnosis .top-area .step-area .item-list .item.active::before {
+  content: '진행중인 단계';
+}
+#self-diagnosis .top-area .step-area .item-list .item + .item {
+  margin-left: 12px;
+}
+#self-diagnosis .section-area {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 1;
+  flex-grow: 1;
+  max-height: calc(100% - (64px + 80px));
+  height: 100%;
+  padding: 24px;
+  background-color: #fff;
+  box-sizing: border-box;
+  overflow-y: auto;
+}
 #self-diagnosis .section-area .title-area {
+  flex-shrink: 0;
   margin-bottom: 24px;
 }
 #self-diagnosis .section-area .title-area .title {
@@ -164,21 +277,28 @@
   text-align: center;
 }
 #self-diagnosis .section-area .contents-area {
+  flex-shrink: 1;
+  flex-grow: 1;
   text-align: center;
+  box-sizing: border-box;
 }
 #self-diagnosis .section-area .example-area {
   padding: 16px;
   margin-bottom: 24px;
+  text-align: center;
   background-color: #F4F4F4;
+  box-sizing: border-box;
 }
 #self-diagnosis .section-area .example-area img {
+  width: 100%;
+  padding: 0;
   margin: 72px 0;
 }
-#self-diagnosis .section-area .question-area {
-
+#self-diagnosis .section-area .question-area .itme-area  {
+  margin-top: 8px;
 }
-#self-diagnosis .section-area .question-area .itme-area {
-
+#self-diagnosis .section-area .question-area .itme-area .item-area  {
+  margin-top: 8px;
 }
 #self-diagnosis .section-area .question-area .itme-area .item-question {
   display: flex;
@@ -195,48 +315,120 @@
   color: #007CFF;
 }
 #self-diagnosis .section-area .question-area .itme-area .item-answer {
-
+  padding: 0 16px;
 }
 #self-diagnosis .section-area .question-area .itme-area .item-answer span {
   display: inline-block;
 }
 #self-diagnosis .section-area .question-area .itme-area .item-answer .answer {
+  flex-shrink: 0;
   margin-right: 16px;
   font-weight: 600;
   color: #007CFF;
 }
-#self-diagnosis .section-area .question-area .itme-area {
-
+#self-diagnosis .bottom-area {
+  position: relative;
+  z-index: 11;
+  display: flex;
+  flex-shrink: 0;
+  justify-content: space-between;
+  align-items: center;
+  flex-basis: 80px;
+  padding: 13px 24px;
+  border-top: 1px solid #E0E0E0;
+  background-color: #fff;
+  box-sizing: border-box;
 }
-#self-diagnosis .section-area {
-
+#self-diagnosis .bottom-area .cont-left .self-diagnosis-btn-zoom {
+  display: inline-flex;
+  align-items: center;
+  padding: 0;
+  margin: 0;
+  border: none;
+  font-size: 24px;
+  color: #003E80;
+}
+#self-diagnosis .bottom-area .cont-left .self-diagnosis-btn-zoom::before {
+  width: 54px;
+  height: 54px;
+  margin-right: 10px;
+  content: '';
+  border-radius: 100%;
+  background: url(../images/self_diagnosis/icon_zoom.png) center center no-repeat #003E80;
+}
+#self-diagnosis .bottom-area .cont-right {
+  display: flex;
+}
+#self-diagnosis .bottom-area .cont-right button {
+  display: inline-block;
+  min-width: 156px;
+  height: 54px;
+  padding: 0;
+  margin: 0 0 0 8px;
+  border: none;
+  font-size: 24px;
+  border-radius: 50px;
+  box-sizing: border-box;
+}
+#self-diagnosis .bottom-area .cont-right .self-diagnosis-btn-out {
+  color: #007CFF;
+  border: 1px solid #007CFF;
+}
+#self-diagnosis .bottom-area .cont-right .self-diagnosis-btn-next {
+  color: #fff;
+  background-color: #007CFF;
+}
+#self-diagnosis .self-diagnosis-btn-close {
+  position: absolute;
+  right: 24px;
+  top: 16px;
+  z-index: 12;
+  display: inline-block;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  margin: 0;
+  font-size: 1px;
+  line-height: 1px;
+  color: transparent;
+  border: none;
+  background: url(../images/self_diagnosis/icon_close.png) center center no-repeat;
+  overflow: hidden;
+  opacity: 1 !important;
 }
 
+/* type-b */
+#self-diagnosis.type-b .section-area {
+  overflow: hidden;
+}
 #self-diagnosis.type-b .section-area .contents-area  {
   display: flex;
   flex-wrap: nowrap;
-  flex-grow: 0;
+  flex-direction: row;
   justify-content: space-between;
+  max-height: 100%;
   padding: 16px;
   text-align: left;
   border-radius: 8px;
   background-color: #F4F4F4;
+  overflow: hidden;
 }
 #self-diagnosis.type-b .section-area .example-area {
   flex-basis: 500px;
+  flex-shrink: 0;
+  max-height: 100%;
   padding: 16px;
   margin-bottom: 0;
   background-color: #fff;
+  overflow-y: auto;
+  box-sizing: border-box;
 }
 #self-diagnosis.type-b .section-area .example-area img {
   margin: 0;
 }
 #self-diagnosis.type-b .section-area .question-area {
-  width: 404px;
   height: 100%;
-}
-#self-diagnosis.type-b .section-area .question-area .itme-area {
-
+  margin-left: 16px;
 }
 #self-diagnosis.type-b .section-area .question-area .itme-area .item-question {
   display: flex;
@@ -252,9 +444,6 @@
   content: 'Q.';
   color: #007CFF;
 }
-#self-diagnosis.type-b .section-area .question-area .itme-area .item-answer {
-
-}
 #self-diagnosis.type-b .section-area .question-area .itme-area .item-answer span {
   display: inline-block;
 }
@@ -264,89 +453,122 @@
   color: #007CFF;
 }
 
+/* 1000px */
+@media only screen and (max-width:1000px){
+  #self-diagnosis .inner-area {
+    width: 100%;
+    max-height: 100vh;
+    height: 100%;
+    border-radius: 0;
+  }
+  #self-diagnosis .section-area {
+    max-height: calc(100% - (64px + 50px));
+  }
+  #self-diagnosis .section-area .contents-area {
+    display: flex;
+    flex-direction: column;
+  }
+  #self-diagnosis .section-area .example-area {
+    display: flex;
+    align-items: center;
+    flex-basis: 50%;
+    padding: 15px !important;
+  }
+  #self-diagnosis .section-area .example-area .example-inner {
+    width: 100%;
+  }
+  #self-diagnosis.type-b .section-area .example-area {
+    align-items: start;
+  }
+  #self-diagnosis .section-area .example-area img {
+    margin: 0;
+  }
 
-
-
-
-
-#self-diagnosis .bottom-area {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  height: 80px;
-  padding: 13px 24px;
-  border-top: 1px solid #E0E0E0;
-  background-color: #fff;
-  box-sizing: border-box;
-}
-#self-diagnosis .bottom-area .cont-left .self-diagnosis-btn-zoom {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  padding: 0;
-  margin: 0;
-  border: none;
-  font-size: 24px;
-  color: #003E80;
-}
-#self-diagnosis .bottom-area .cont-left .self-diagnosis-btn-zoom::before {
-  width: 54px;
-  height: 54px;
-  content: '';
-  border-radius: 100%;
-  background: url(../images/self_diagnosis/icon_zoom.png) center center no-repeat #003E80;
-}
-#self-diagnosis .bottom-area .cont-right {
-  display: flex;
-  gap: 8px;
-}
-#self-diagnosis .bottom-area .cont-right button {
-  display: inline-block;
-  min-width: 156px;
-  height: 54px;
-  padding: 0;
-  margin: 0;
-  border: none;
-  font-size: 24px;
-  border-radius: 50px;
-  box-sizing: border-box;
-}
-#self-diagnosis .bottom-area .cont-right .self-diagnosis-btn-out {
-  color: #007CFF;
-  border: 1px solid #007CFF;
-}
-#self-diagnosis .bottom-area .cont-right .self-diagnosis-btn-next {
-  color: #fff;
-  background-color: #007CFF;
-}
-#self-diagnosis .bottom-area {
-
-}
-#self-diagnosis .bottom-area {
-
-}
-#self-diagnosis .self-diagnosis-btn-close {
-  position: absolute;
-  right: 24px;
-  top: 16px;
-  display: inline-block;
-  width: 32px;
-  height: 32px;
-  padding: 0;
-  margin: 0;
-  font-size: 1px;
-  line-height: 1px;
-  color: transparent;
-  border: none;
-  background: url(../images/self_diagnosis/icon_close.png) center center no-repeat;
-  overflow: hidden;
-  opacity: 1 !important;
-}
-#self-diagnosis {
-
-}
-#self-diagnosis {
-
+  #self-diagnosis .bottom-area {
+    flex-basis: 40px;
+  }
+  #self-diagnosis .bottom-area .cont-left .self-diagnosis-btn-zoom {
+    font-size: 18px;
+  }
+  #self-diagnosis .bottom-area .cont-left .self-diagnosis-btn-zoom::before {
+    width: 35px;
+    height: 35px;
+    margin-right: 6px;
+    background-size: 50%;
+  }
+  #self-diagnosis .bottom-area .cont-right button {
+    min-width: 80px;
+    height:35px;
+    font-size: 18px;
+    line-height: 35px;
+  }
 }
 
+/* 640px */
+@media only screen and (max-width:640px){
+  #self-diagnosis .section-area {
+    max-height: calc(100% - (50px + 40px));
+  }
+  #self-diagnosis .top-area {
+    flex-basis: 50px;
+    padding: 0 50px 0 10px;
+  }
+  #self-diagnosis .top-area .title {
+    font-size: 18px;
+    line-height: 50px;
+  }
+  #self-diagnosis .top-area .step-area .item-list .item {
+    width: 16px;
+    height: 16px;
+  }
+  #self-diagnosis .top-area .step-area .item-list .item + .item {
+    margin-left: 4px;
+  }
+  #self-diagnosis .section-area {
+    padding: 15px 10px;
+  }
+  #self-diagnosis .section-area .title-area {
+    margin-bottom: 15px;
+  }
+  #self-diagnosis .section-area .title-area .title {
+    font-size: 18px;
+  }
+  #self-diagnosis.type-b .section-area .contents-area {
+    flex-direction: column;
+  }
+  #self-diagnosis.type-b .section-area .example-area {
+    flex-basis: 60%;
+  }
+  #self-diagnosis.type-b .section-area .question-area {
+    height: 40%;
+    padding: 15px 0;
+    box-sizing: border-box;
+  }
+  #self-diagnosis .bottom-area {
+    padding: 10px 10px;
+  }
+  #self-diagnosis .bottom-area .cont-left .self-diagnosis-btn-zoom {
+    font-size: 16px;
+  }
+  #self-diagnosis .bottom-area .cont-left .self-diagnosis-btn-zoom::before {
+    width: 30px;
+    height: 30px;
+  }
+  #self-diagnosis .bottom-area .cont-right button {
+    min-width: 70px;
+    height:30px;
+    font-size: 16px;
+    line-height: 30px;
+    letter-spacing: -1px;
+  }
+  #self-diagnosis .self-diagnosis-btn-close {
+    top: 10px;
+    right: 5px;
+  }
+}
 
+@media only screen and (max-width:400px){
+  #self-diagnosis .top-area .title {
+    font-size: 16px;
+  }
+}
