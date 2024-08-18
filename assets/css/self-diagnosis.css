@@ -178,6 +178,17 @@
 .explanation-box {
   margin-top: 16px;
 }
+.box-source {
+  padding: 4px 8px;
+  margin-top: 24px;
+  font-size: 13px;
+  line-height: 16px;
+  color: #303030;
+  text-align: left;
+  word-break: break-all;
+  border-top: 1px solid #B0B0B0;
+  background-color: #f2f2f2;
+}
 /* line */
 .line-style {
   border-bottom: 1px solid #B0B0B0;
@@ -214,6 +225,9 @@
   .self-diagnosis .form-answer {
     padding: 0 120px;
   }
+  .box-source {
+    margin-top: 16px;
+  }
 }
 @media only screen and (max-width:640px){
   .self-diagnosis input[type="text"],.self-diagnosis select {
@@ -247,6 +261,9 @@
     padding: 8px;
   }
   .explanation-box {
+    margin-top: 8px;
+  }
+  .box-source {
     margin-top: 8px;
   }
 }
