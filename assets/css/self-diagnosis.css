@@ -25,7 +25,13 @@
 }
 .self-diagnosis .form-group {
   display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   align-items: center;
+  margin-bottom: 0;
+}
+.self-diagnosis.type-b .form-group {
+  justify-content: start;
 }
 .self-diagnosis .form-group.column {
   flex-direction: column;
@@ -40,8 +46,17 @@
 .self-diagnosis .form-group.in3 input[type="text"],.self-diagnosis .form-group.in3 select {
   width: calc((100% / 3) - (16px / 3));
 }
-.self-diagnosis .form-group .form-box + .form-box {
-  margin-left: 16px;
+.self-diagnosis .form-group span {
+  margin: 2px 0;
+}
+.self-diagnosis .form-group .form-box {
+  margin-right: 16px;
+}
+.self-diagnosis .form-group .form-box:last-child {
+  margin-right: 0;
+}
+.self-diagnosis .form-group .form-child {
+  margin-left: -8px;
 }
 .self-diagnosis .form-group.column .form-box + .form-box {
   margin: 12px 0 0 0;
@@ -62,10 +77,11 @@
 }
 .self-diagnosis .form-box label {
   display: inline-block;
-  padding-left: 34px;
+  padding-left: 38px;
   margin-bottom: 0;
   line-height: 30px;
   font-weight: 400;
+  cursor: pointer;
 }
 .self-diagnosis .form-box label::before,.self-diagnosis .form-box label::after {
   position: absolute;
@@ -81,24 +97,8 @@
   border: 1px solid #B0B0B0;
   background-color: #fff;
 }
-.self-diagnosis .form-box input[type="checkbox"] ~ label::before {
-  border-radius:4px;
-}
-.self-diagnosis .form-box input[type="checkbox"] ~ label::after {
-  left:8px;
-  top:10px;
-  width:14px;
-  height:8px;
-  border-left:2px solid #fff;
-  border-bottom:2px solid #fff;
-  transform:rotate(315deg);
-}
 .self-diagnosis .form-box input[type="radio"] ~ label::before {
   border-radius:100%;
-}
-.self-diagnosis .form-box input[type="checkbox"]:checked ~ label::before{
-  border:none;
-  background-color:#007CFF !important;
 }
 .self-diagnosis .form-box input[type="radio"]:checked ~ label::before{
   border-color: #007CFF;
@@ -111,10 +111,31 @@
   border-radius: 100%;
   background-color: #007CFF;
 }
+.self-diagnosis .form-box input[type="checkbox"]:checked ~ label::before,.self-diagnosis .form-box.check input[type="radio"]:checked ~ label::before {
+  border:none;
+  background-color:#007CFF !important;
+}
+.self-diagnosis .form-box input[type="checkbox"] ~ label::before,.self-diagnosis .form-box.check input[type="radio"] ~ label::before {
+  border-radius:4px;
+}
+.self-diagnosis .form-box input[type="checkbox"] ~ label::after,.self-diagnosis .form-box.check input[type="radio"] ~ label::after {
+  left:8px;
+  top:9px;
+  width:14px;
+  height:8px;
+  border-left:2px solid #fff;
+  border-bottom:2px solid #fff;
+  border-radius: 0;
+  transform:rotate(315deg);
+}
 .self-diagnosis .form-answer {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 0 200px;
+}
+.self-diagnosis.type-b .form-answer {
+  padding: 0;
 }
 .self-diagnosis .spacing {
   flex-shrink: 0;
@@ -123,17 +144,6 @@
 }
 .self-diagnosis .spacing:last-child {
   margin-right: 0;
-}
-#self-diagnosis::before {
-  position: absolute;
-  left: 0;
-  top: 0;
-  display: block;
-  width: 100%;
-  height: 100%;
-  content: '';
-  background-color: #000;
-  opacity: 0.8;
 }
 /* talbe */
 .table-style {
@@ -146,7 +156,6 @@
 .table-style thead th {
   font-weight: 600;
   color: #303030;
-
 }
 .table-style thead tr:last-child th {
   border-bottom: none;
@@ -157,6 +166,26 @@
   text-align: center;
   vertical-align: middle;
   border: 1px solid #B0B0B0;
+}
+/* box */
+.box-style {
+  padding: 16px;
+  background-color: #f4f4f4;
+}
+.box-style.bg {
+  background-color: #e6f2ff ;
+}
+.explanation-box {
+  margin-top: 16px;
+}
+/* line */
+.line-style {
+  border-bottom: 1px solid #B0B0B0;
+}
+/* text */
+.text-important {
+  font-weight: 600;
+  color: #303030;
 }
 /*  */
 .blind-box {
@@ -177,9 +206,19 @@
 .text-right {
   text-align: right !important;
 }
+@media only screen and (max-width:1000px){
+  .self-diagnosis input[type="text"],.self-diagnosis select {
+    padding: 4px;
+    font-size: 14px;
+  }
+  .self-diagnosis .form-answer {
+    padding: 0 120px;
+  }
+}
 @media only screen and (max-width:640px){
   .self-diagnosis input[type="text"],.self-diagnosis select {
     height: 30px;
+    font-size: 13px;
   }
   .self-diagnosis .form-box label {
     padding-left: 24px;
@@ -189,17 +228,26 @@
     width:20px;
     height:20px;
   }
-  .self-diagnosis .form-box input[type="checkbox"] ~ label::after {
-    left:5px;
-    top:6px;
-    width:10px;
-    height:6px;
-  }
   .self-diagnosis .form-box input[type="radio"]:checked ~ label::after{
     left:4px;
     top:4px;
     width:12px;
     height:12px;
+  }
+  .self-diagnosis .form-box input[type="checkbox"] ~ label::after,.self-diagnosis .form-box.check input[type="radio"] ~ label::after {
+    left:5px;
+    top:6px;
+    width:10px;
+    height:6px;
+  }
+  .self-diagnosis .form-answer {
+    padding: 0 8%;
+  }
+  .box-style {
+    padding: 8px;
+  }
+  .explanation-box {
+    margin-top: 8px;
   }
 }
 
@@ -223,6 +271,17 @@
 .self-diagnosis-active #self-diagnosis {
   display: block;
 }
+#self-diagnosis::before {
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  content: '';
+  background-color: #000;
+  opacity: 0.8;
+}
 #self-diagnosis .inner-area {
   position: absolute;
   left: 50%;
@@ -234,7 +293,7 @@
   max-width: 1000px;
   width: 1000px;
   max-height:  90vh;
-  height:  740px;
+  /* height:  740px; */
   border-radius: 24px;
   transform: translate(-50%, -50%);
   overflow: hidden;
@@ -254,7 +313,6 @@
 #self-diagnosis .top-area .title {
   display: inline-block;
   font-size: 24px;
-  line-height: 64px;
   font-weight: 600;
   color: #fff;
   vertical-align: middle;
@@ -376,7 +434,7 @@
 #self-diagnosis .section-area .question-area .item-area .item-question {
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: start;
   margin-bottom: 16px;
   font-size: 20px;
   font-weight: 600;
@@ -563,7 +621,9 @@
   #self-diagnosis .section-area .question-area .voice-confirmation-area {
     margin: 12px 0;
   }
-
+  #self-diagnosis .section-area .question-area .item-area .item-question {
+    font-size: 18px;
+  }
   #self-diagnosis .bottom-area {
     flex-basis: 40px;
   }
@@ -598,7 +658,6 @@
   }
   #self-diagnosis .top-area .title {
     font-size: 18px;
-    line-height: 50px;
   }
   #self-diagnosis .top-area .step-area .item-list .item {
     width: 16px;
@@ -623,6 +682,10 @@
     display: inline-block;
     width: 40px;
     height: 40px;
+  }
+  #self-diagnosis .section-area .question-area .item-area .item-question {
+    margin-bottom: 12px;
+    font-size: 16px;
   }
   #self-diagnosis.type-b .section-area .contents-area {
     flex-direction: column;
@@ -658,10 +721,6 @@
     top: 10px;
     right: 5px;
   }
-
-  #self-diagnosis .section-area .question-area .item-area + .item-area {
-
-  }
   #self-diagnosis.type-b .section-area .question-area .item-area .item-question {
     margin-bottom: 10px;
     font-size: 16px;
@@ -670,9 +729,211 @@
     margin-top: 5px;
   }
 }
-
 @media only screen and (max-width:400px){
   #self-diagnosis .top-area .title {
     font-size: 16px;
+  }
+}
+
+
+
+
+/* 인트로 */
+.intro-box .intro-inner-area {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+}
+.intro-box .intro-inner-area::before {
+  flex-shrink: 0;
+  flex-basis: 352px;
+  min-height: 100px;
+  content: '';
+  border-radius: 16px;
+  background: url(../images/self_diagnosis/bg_intro01.png) bottom right no-repeat #c9ece8;
+  background-size: 100% auto;
+  overflow: hidden;
+}
+.intro-box .intro-contents-area {
+  padding: 16px;
+  margin-left: 16px;
+  font-size: 20px;
+  line-height: 26px;
+  box-sizing: border-box;
+}
+.intro-box .intro-contents-area br {
+  display: none;
+}
+.intro-box .intro-contents-area .cont {
+  margin-bottom: 40px;
+}
+.intro-box .intro-contents-area .cont.title {
+  font-weight: 600;
+}
+.intro-box .intro-contents-area .cont strong {
+  font-weight: 600;
+  color: #003E80;
+}
+.intro-box .department-box .title {
+  margin-bottom: 4px;
+  font-weight: 600;
+  color: #003E80;
+  box-sizing: border-box;
+}
+.intro-box .department-box .cont-box {
+  display: flex;
+}
+.intro-box .department-box .cont-box img {
+  max-width: 100%;
+}
+.intro-box.type-b .intro-inner-area {
+  position: relative;
+  display: block;
+}
+.intro-box.type-b .intro-inner-area::before {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  display: inline-block;
+  width: 310px;
+  height: 310px;
+  border-radius: 0;
+  background: url(../images/self_diagnosis/bg_intro02.png) bottom right no-repeat transparent;
+}
+.intro-box .intro-contents-area {
+  padding: 24px;
+  margin-left: 0;
+}
+.intro-box.type-b .intro-contents-area br {
+  display: block;
+}
+.intro-box.type-b .intro-contents-area .cont {
+  margin-bottom: 24px;
+}
+.intro-box.type-b .department-box {
+  margin-top: 54px;
+}
+.intro-box.type-b .department-box .title {
+  display: inline-block;
+  padding: 8px 16px;
+  color: #303030;
+  border-radius: 8px;
+  background-color: #eee;
+}
+@media only screen and (max-width:1000px){
+  .intro-box .intro-inner-area::before {
+    flex-basis: 45%;
+  }
+  .intro-box .intro-contents-area {
+    padding: 16px 10px !important;
+    margin-left: 10px;
+    font-size: 18px;
+    line-height: 26px;
+  }
+  .intro-box.type-b .intro-contents-area {
+    margin-left: 0;
+  }
+  .intro-box.type-b .intro-inner-area::before {
+    bottom: 50px;
+    width: 210px;
+    height: 210px;
+    background-size: 100% auto;
+  }
+}
+@media only screen and (max-width:640px){
+  .intro-box .intro-inner-area {
+    flex-direction: column;
+  }
+  .intro-box .intro-inner-area::before {
+    background-position: center center;
+    background-size: cover;
+  }
+  .intro-box .intro-contents-area {
+    padding: 16px 10px !important;
+    margin-left: 0;
+    font-size: 16px;
+    line-height: 26px;
+  }
+  .intro-box .intro-contents-area .cont {
+    margin-bottom: 20px;
+  }
+  .intro-box.type-b .intro-inner-area::before {
+    display: none;
+  }
+  .intro-box.type-b .intro-contents-area br {
+    display: none;
+  }
+  .intro-box.type-b .department-box {
+    margin-top: 30px;
+  }
+}
+
+/* 이용 동의 */
+.agree-box {
+  padding: 16px;
+}
+.agree-box .title-h3 {
+  margin: 32px 0 16px;
+  font-size: 20px;
+  color: #303030;
+}
+.agree-box .inner-box {
+  padding: 16px 0;
+  border-top: 1px solid #B0B0B0;
+  border-bottom: 1px solid #B0B0B0;
+}
+.agree-box table {
+  font-size: 18px;
+}
+.agree-box .agree-inner {
+  margin-top: 36px;
+}
+.agree-box .agree-inner .title {
+  margin-bottom: 16px;
+  font-size: 18px;
+  font-weight: 600;
+  color: #303030;
+}
+@media only screen and (max-width:1000px){
+  .agree-box {
+    padding: 10px;
+  }
+  .agree-box .title-h3 {
+    margin: 32px 0 16px;
+  }
+  .agree-box .inner-box {
+    padding: 16px 0;
+  }
+  .agree-box table {
+    font-size: 16px;
+  }
+  .agree-box .agree-inner {
+    margin-top: 24px;
+  }
+  .agree-box .agree-inner .title {
+    margin-bottom: 12px;
+  }
+}
+@media only screen and (max-width:640px){
+  .agree-box {
+    padding: 0;
+  }
+  .agree-box .title-h3 {
+    margin: 16px 0 8px;
+    font-size: 16px;
+  }
+  .agree-box .inner-box {
+    padding: 16px 0;
+  }
+  .agree-box table {
+    font-size: 14px;
+  }
+  .agree-box .agree-inner {
+    margin-top: 16px;
+  }
+  .agree-box .agree-inner .title {
+    margin-bottom: 8px;
+    font-size: 14px;
   }
 }

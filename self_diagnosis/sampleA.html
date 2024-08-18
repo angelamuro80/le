@@ -1,0 +1,969 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=0, user-scalable=no" />
+  <meta name="keywords" content="문해, 문해교육, 국가문해교육센터">
+  <meta name="description" content="국가문해교육센터 홈페이지에서 다양하고 유용한 정보를 만나 보세요">
+  <meta name="Subject" content="국가문해교육센터" />
+  <meta name="Title" content="국가평생교육진흥원&nbsp;국가문해교육센터" />
+  <meta name="format-detection" content="telephone=no" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  <meta name="google-site-verification" content="mFyReWyXu-Y5tbR2Lek1rI5La210RngJ3ZS_WJkzQ_8" />
+  <meta name="naver-site-verification" content="258592b172599121769cdf6dda93eb5fa9edb56b" />
+  <meta property="og:title" content="국가평생교육진흥원&nbsp;국가문해교육센터">
+  <meta property="og:url" content="https://www.le.or.kr">
+  <meta property="og:description" content="국가문해교육센터 홈페이지에서 다양하고 유용한 정보를 만나 보세요.">
+  <link rel="icon" href="https://le.or.kr/common/images/common/favicon.ico">
+
+  <title>국가문해교육센터</title>
+
+  <!-- CSS -->
+  <link href="https://le.or.kr/common/css/bootstrap.css" rel="stylesheet">
+  <link href="https://le.or.kr/common/css/font.css" rel="stylesheet"><!-- font : SpoqaHanSans -->
+  <link href="https://le.or.kr/common/css/default.css?ipDate=20240811063027" rel="stylesheet">
+  <link href="https://le.or.kr/common/css/common.css?ipDate=20240811063027" rel="stylesheet">
+  <link href="https://le.or.kr/common/css/button.css?ipDate=20240811063027" rel="stylesheet">
+  <link href="https://le.or.kr/common/css/main.css?ipDate=20240811063027" rel="stylesheet">
+
+  <link href="../assets/css/self-diagnosis.css" rel="stylesheet">
+
+  <!--[if lt IE 9]><script src="js/ie8-responsive-file-warning.js"></script><![endif]-->
+  <!-- javascript -->
+  <script src="https://le.or.kr/common/js/ie-emulation-modes-warning.js"></script>
+  <script src="https://le.or.kr/common/js/jquery.min.js"></script>
+  <script src="https://le.or.kr/common/js/bootstrap.min.js"></script>
+  <script src="https://le.or.kr/common/js/jquery.slides.min.js"></script>
+  <script src="https://le.or.kr/common/js/common_ui.js?ipDate=20240811063027"></script>
+  <script src="https://le.or.kr/common/js/raphael-min.js"></script>
+  <script src="https://le.or.kr/common/js/map.js"></script>
+  <script src="https://le.or.kr/common/js/comUtil.js?ipDate=20240811063027"></script>
+  <script src="https://le.or.kr/common/js/comConstant.js?ipDate=20240811063027"></script>
+</head>
+
+<body class="self-diagnosis-active">
+
+  <form id="popupFrm" name="popupFrm" action="/mainPopup.do" method="post">
+    <input type="hidden" id="popupId" name="id" value="" />
+  </form>
+  <form id="totSearchFrm" name="totSearchFrm" action="/totalSearch.do" method="post">
+    <input type="hidden" name="totKeyword" value="" />
+  </form>
+  <form id="contentFrm" name="contentFrm" action="/contentView.do" method="post">
+    <input type="hidden" name="menuId" value="" />
+    <input type="hidden" name="id" value="" />
+    <input type="hidden" name="pageIndex" value="1" />
+    <input type="hidden" name="srchType" value="" />
+    <input type="hidden" name="srchKeyword" value="" />
+    <input type="hidden" name="categoryId" value="" />
+  </form>
+
+  <script type="text/javaScript">
+	// 모바일/PC 접속 구분 필터
+  // var filter = "win16|win32|win64|mac";
+	//selectOneSlctnDe function 문해의 달 선정일 날짜 셋팅 변수
+	var getYear = "";
+	var getMonth = "";
+	var getDay = "";
+	// 문해의 달 선정일 분기 플래그
+	var selectOneSlctnDeFlag= false;
+
+	// 디데이 카운터 메소드
+	// var SETTIMEOUT_NAME = setInterval('setViewTime()', 400);
+	// 서브페이지 탭메뉴 기본 indax값 셋팅용
+	var sub_index = 0;
+	$(document).ready(function() {
+		// 모바일 화면 접속일 경우 처리 문해의달 안내 멘트 css 처리
+// 		if (navigator.platform) {
+// 			if (0 > filter.indexOf(navigator.platform.toLowerCase())) {
+// 				$('#siwaLink').hide();
+// 				$('#dateViewDiv').css("margin-top", "");
+// 				$('#dateViewDiv').css("margin-left", "");
+// 				$('#dateViewDiv').css("width", "35%");
+// 			}
+// 		}
+    //초기 시화전 안내문구 숨김
+    $('.lit_area').hide();
+    //문해의 달 선정일 조회 function
+    selectOneSlctnDe();
+    //디데이 카운터 메소드 반복 호출
+    //SETTIMEOUT_NAME;
+
+    //서브 메뉴 진입 시 탭타입의 기본 선택된 index를 채번
+    var dBtn = $(".tab_type li");
+    for (var i = 0; i < dBtn.length; i++) {
+      if ($('.tab_type').children("li").eq(i).hasClass('on')) {
+        sub_index = i;
+      }
+    }
+	});
+
+	var fnGoPage = function(menuId, id, pageIndex, url, type, keyword,
+		categoryId) {
+
+		if (typeof menuId == "undefined") {
+			return false;
+		}
+		$("#contentFrm").find("input[name='menuId']").val(menuId);
+		if (typeof id == "undefined" || id == '') {
+			$("#contentFrm").find("input[name='id']").val("");
+		} else {
+			$("#contentFrm").find("input[name='id']").val(id);
+		}
+		if (typeof pageIndex != "undefined" && pageIndex != '') {
+			$("#contentFrm").find("input[name='pageIndex']").val(pageIndex);
+		}
+		if (typeof url != "undefined") {
+			$("#contentFrm").attr("action", url);
+		}
+		if (typeof type != "undefined") {
+			$("#contentFrm").find("input[name='srchType']").val(type);
+		} else {
+			$("#contentFrm").find("input[name='srchType']").val("");
+		}
+		if (typeof keyword != "undefined") {
+			$("#contentFrm").find("input[name='srchKeyword']").val(keyword);
+		} else {
+			$("#contentFrm").find("input[name='srchKeyword']").val("");
+		}
+		if (typeof categoryId != "undefined") {
+			$("#contentFrm").find("input[name='categoryId']").val(categoryId);
+		} else {
+			$("#contentFrm").find("input[name='categoryId']").val("");
+		}
+
+		$("#contentFrm").submit();
+	};
+
+	/**
+	 * 디데이 카운터 함수
+	 */
+	var setViewTime = function() {
+    //선정일 날짜가 있는경우
+		if(selectOneSlctnDeFlag){
+			var now = new Date(); //현재날짜
+			var Dday = new Date(getYear, getMonth - 1, getDay);
+			var gap = now.getTime() - Dday.getTime();
+			//gap을 일(밀리초*초*분*시간)로 나누고 -1을 곱한다. -1을 곱해야 일자 오차가 없다.
+			var day = Math.floor(gap / (1000 * 60 * 60 * 24)) * -1
+      var str_day = ""+Math.floor(gap / (1000 * 60 * 60 * 24)) * -1;
+			var tag_day="";
+			if (day == 0 || day < 0) {
+				if(day == 0){
+					tag_day+="<li class='d_day'>d</li>";
+					tag_day+="<li class='d_day'>a</li>";
+					tag_day+="<li class='d_day'>y</li>";
+					$('.lit_area').show()
+					$(".lit_day").html("<ul><li class='t_no'>문해의 달 선포식</li><li>D -</li>"+tag_day+"</ul>");
+				}else{
+					//타이머 반복 종료
+					//clearInterval(SETTIMEOUT_NAME);
+					$('.lit_area').hide();
+					$(".lit_day").html("");
+				}
+			} else {
+				//day 1자리
+				if( 0 < day &&  day < 10 ){
+					tag_day+="<li class='d_day'>0</li>";
+					tag_day+="<li class='d_day'>"+ day + "</li>";
+				}//day 2자리
+				else if(9 <  day &&  day  < 100 ){
+					tag_day+="<li class='d_day'>"+str_day.substring(0,1) + "</li>";
+					tag_day+="<li class='d_day'>"+str_day.substring(1) + "</li>";
+				}//day 3자리
+				else{
+					tag_day+="<li class='d_day'>"+str_day.substring(0,1) + "</li>";
+					tag_day+="<li class='d_day'>"+ str_day.substring(1,2) + "</li>";
+					tag_day+="<li class='d_day'>"+ str_day.substring(2) + "</li>";
+				}
+				$('.lit_area').show()
+				$(".lit_day").html("<ul><li class='t_no'>문해의 달 선포식</li><li>D -</li>"+tag_day+"</ul>");
+			}
+		}else{
+			$(".lit_day").html("");
+			$('.lit_area').hide();
+		}
+	}
+
+	//문해의 달 선정일 조회
+	function selectOneSlctnDe(){
+		var param = {
+      useYn : "Y"
+      ,editMode : "CM"
+		};
+
+		$.ajax({
+			type : 'post',
+			url : '/slctnDeSearch.do',
+			async : true,
+			cache : false,
+			dataType : 'json',
+			data : param,
+			success : function(result) {
+				if(result.slctnDe =="OK"){
+					selectOneSlctnDeFlag= true;
+					//디데이 날짜 셋팅
+					getYear = result.YYYY;
+					getMonth = result.MM;
+					getDay = result.DD;
+					setViewTime();
+				}else{
+					selectOneSlctnDeFlag= false;
+				}
+			},
+			error : function(xhr, status, error) {
+				selectOneSlctnDeFlag= false;
+			}
+		});
+	}
+
+	/**
+	 *  contentType이 '0004'인 경우
+	 *	intercepter를 타지 않기 때문에 수동으로 접속 로그 저장 처리
+	 */
+	function fnGoLinkUrl(id, url) {
+		var menuId = id;
+		if (id == "38") {
+			menuId = "40";
+		} else if (id == "4") {
+			menuId = "97";
+		}
+
+		// 메뉴ID 셋팅
+		var param = {
+			menuId : menuId
+		};
+
+		$.ajax({
+			type : 'post',
+			url : '/webzinLogSave.do',
+			async : true,
+			cache : false,
+			dataType : 'json',
+			data : param,
+			success : function(result) {
+				window.open(url, "_blank");
+			},
+			error : function(xhr, status, error) {
+				window.open(url, "_blank");
+			}
+		});
+	}
+</script>
+
+  <!-- Header -->
+  <div id="header">
+    <!-- skipMenu -->
+    <div id="accessibility">
+      <a href="#colgroup">본문 바로가기</a>
+    </div>
+    <!-- E : skipMenu -->
+    <!-- 767이하 화면일때 GNB Modal -->
+    <div class="modal fade" id="leftmenuModal" tabindex="-1" role="Leftmenu" aria-hidden="true">
+      <div class="left-menu">
+        <div class="lm-header clearfix">
+          <button type="button" class="fl-r btn btn-size2 btn-close" data-dismiss="modal">닫기</button>
+          <h2>전체 메뉴</h2>
+        </div>
+        <div class="lm-body" id="accordion">
+          <ul class="lm-list">
+            <li><a href="javascript:fnGoPage('1');">소개마당<span class="sp">하위메뉴열기</span></a>
+              <ul class="depth">
+                <li><a href="javascript:fnGoPage('7');" data-role="7">국가문해교육센터</a></li>
+                <li>
+                  <dl>
+                    <dt><a href="javascript:fnGoPage('9');" data-role="9">주요사업</a></dt>
+                    <dd><a href="javascript:fnGoPage('9');" data-role="9">광역 문해교육 지원</a></dd>
+                    <dd><a href="javascript:fnGoPage('10');" data-role="10">프로그램 운영 지원</a></dd>
+                    <dd><a href="javascript:fnGoPage('11');" data-role="11">성인학습자 학력인정</a></dd>
+                    <dd><a href="javascript:fnGoPage('8');" data-role="8">성인문해능력조사</a></dd>
+                    <dd><a href="javascript:fnGoPage('12');" data-role="12">문해교육 활성화</a></dd>
+                  </dl>
+                </li>
+                <li><a href="javascript:fnGoPage('13');" data-role="13">오시는 길</a></li>
+              </ul>
+            </li>
+            <li><a href="javascript:fnGoPage('2');">알림마당<span class="sp">하위메뉴열기</span></a>
+              <ul class="depth">
+                <li>
+                  <dl>
+                    <dt><a href="javascript:fnGoPage('14');" data-role="14">공지사항</a></dt>
+                    <dd><a href="javascript:fnGoPage('14');" data-role="14">국가문해교육센터</a></dd>
+                    <dd><a href="javascript:fnGoPage('17');" data-role="17">시도문해교육센터</a></dd>
+                    <dd><a href="javascript:fnGoPage('67');" data-role="67">시·도교육청</a></dd>
+                  </dl>
+                </li>
+                <li>
+                  <a href="javascript:fnGoPage('15');" data-role="15">보도자료</a>
+                </li>
+              </ul>
+            </li>
+            <li><a href="javascript:fnGoPage('4');">학습마당<span class="sp">하위메뉴열기</span></a>
+              <ul class="depth">
+                <li>
+                  <a href="/edu/main.do" target="_blank" title="새 창으로 이동" data-ctype="0004">성인문해교육 e-학습터</a>
+                </li>
+                <li>
+                  <a href="javascript:fnGoPage('26');" data-role="26">성인문해교육방송</a>
+                </li>
+                <li>
+                  <a href="javascript:fnGoPage('29');" data-role="29">생활문해교육</a>
+                </li>
+              </ul>
+            </li>
+            <li><a href="javascript:fnGoPage('3');">자료마당<span class="sp">하위메뉴열기</span></a>
+              <ul class="depth">
+                <li>
+                  <a href="javascript:fnGoPage('51');" data-role="51">사업운영자료</a>
+                </li>
+                <li>
+                  <a href="javascript:fnGoPage('60');" data-role="60">기관성과자료</a>
+                </li>
+                <li>
+                  <a href="javascript:fnGoPage('24');" data-role="24">연구자료</a>
+                </li>
+                <li>
+                  <dl>
+                    <dt><a href="http://xn--9d0b4b110dzyfc9bm8jlra38aha0155ar9b.kr/" target="_blank" title="새 창으로 이동" data-ctype="0004">시화전 자료</a></dt>
+                    <dd><a href="http://xn--9d0b4b110dzyfc9bm8jlra38aha0155ar9b.kr/" target="_blank" title="새 창으로 이동" data-ctype="0004">온라인 전시관</a></dd>
+                    <dd><a href="javascript:fnGoPage('20');" data-role="20">역대 수상작</a></dd>
+                    <dd><a href="javascript:fnGoPage('59');" data-role="59">우수작품집</a></dd>
+                  </dl>
+                </li>
+                <li>
+                  <dl>
+                    <dt><a href="javascript:fnGoPage('71');" data-role="71">학력인정 증명</a></dt>
+                    <dd><a href="javascript:fnGoPage('71');" data-role="71">학력인정 증명서 신청</a></dd>
+                    <dd><a href="javascript:fnGoPage('87');" data-role="87">학력인정 증명서 발급</a></dd>
+                  </dl>
+                </li>
+              </ul>
+            </li>
+            <li><a href="javascript:fnGoPage('38');">소통마당<span class="sp">하위메뉴열기</span></a>
+              <ul class="depth">
+                <li>
+                  <a href="javascript:fnGoPage('98');" data-role="98">뉴스레터</a>
+                </li>
+                <li>
+                  <dl>
+                    <dt><a href="javascript:fnGoPage('22');" data-role="22">갤러리</a></dt>
+                    <dd><a href="javascript:fnGoPage('22');" data-role="22">포토갤러리</a></dd>
+                    <dd><a href="javascript:fnGoPage('23');" data-role="23">영상갤러리</a></dd>
+                  </dl>
+                </li>
+                <li>
+                  <a href="javascript:fnGoPage('19');" data-role="19">자주하는 질문</a>
+                </li>
+              </ul>
+            </li>
+            <li><a href="javascript:fnGoPage('5');">기관안내<span class="sp">하위메뉴열기</span></a>
+              <ul class="depth">
+                <li>
+                  <a href="javascript:fnGoPage('31');" data-role="31">광역문해교육기관</a>
+                </li>
+                <li>
+                  <a href="javascript:fnGoPage('32');" data-role="32">프로그램 운영기관</a>
+                </li>
+                <li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <!-- E : 767이하 화면일때 GNB Modal -->
+        <hr>
+        <!-- GNB -->
+        <div class="navbar-wrapper">
+          <div class="navbar navbar-fixed-top">
+            <!-- headerTop  -->
+            <div class="header-wrap">
+              <div class="navbar-header" class="clearfix">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="modal" data-target="#leftmenuModal" aria-expanded="false" aria-controls="navbar">
+                  <span class="btn btn-size2 am-ico2">메뉴</span>
+                </button>
+                <!-- 767이하 화면일때 검색창 -->
+                <div class="srch-box2" id="minSearch">
+                  <a class="btn btn_srch2 btn-size2" href="#"><span class="sp">검색 열기</span></a>
+                  <div class="box-wrap">
+                    <label class="blind" for="totSrch">전체검색</label>
+                    <input type="text" class="form-control" id="totSrch" placeholder="검색어를 입력하세요." name="totSrchKeyword">
+                    <button class="btn btn-size1 btn_srch" onclick="totalSearch()"><span>검색</span></button>
+                  </div>
+                </div>
+                <!-- E : 767이하 화면일때 검색창 -->
+                <!-- top -->
+                <h1><a class="navbar-brand" href="/">국가문해교육센터</a></h1>
+                <div class="lit_area" tabindex="-1">
+                  <p>문해의 달 선포식</p>
+                  <div class="lit_day"></div>
+                </div>
+                <div class="nav-right-wrap">
+                  <div class="srch-box" id="maxSearch">
+                    <label class="blind" for="mTotSrch">전체검색</label>
+                    <input type="text" class="form-control" id="mTotSrch" placeholder="검색어를 입력하세요." name="totSrchKeyword">
+                    <button class="btn btn-size1 btn_srch" onclick="totalSearch()"><span>검색</span></button>
+                  </div>
+                  <div class="txt-control">
+                    <span class="clr-wt mgl10">글자크기</span>
+                    <a class="btn size-up btn-size1" id="size-plus" href="#" href="#"><span>글자크기 크게</span></a><a
+                      class="btn size-down btn-size1" id="size-minus" href="#"><span>글자크기 작게</span></a><a
+                      class="btn size-nm btn-size1" id="size-normal" href="#"><span>글자크기 원래대로</span></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- E : headerTop -->
+
+            <!-- lnb -->
+            <div class="lnb-wrap">
+              <h2 class="skip">전체메뉴</h2>
+              <input type="hidden" id="remCnt" name="remCnt" value="325" />
+              <div class="lnb-area" id="lnbHeader">
+                <ul id="lnb" class="lnb inner clearfix">
+                  <li>
+                    <h3><a href="javascript:fnGoPage('1');">소개마당</a></h3>
+                      <ul>
+                        <li><a href="javascript:fnGoPage('7');">국가문해교육센터</a></li>
+                        <li><a href="javascript:fnGoPage('9');">주요사업</a>
+                          <ul class="s-list">
+                            <li><a href="javascript:fnGoPage('9');">광역 문해교육 지원</a></li>
+                            <li><a href="javascript:fnGoPage('10');">프로그램 운영 지원</a></li>
+                            <li><a href="javascript:fnGoPage('11');">성인학습자 학력인정</a></li>
+                            <li><a href="javascript:fnGoPage('8');">성인문해능력조사</a></li>
+                            <li><a href="javascript:fnGoPage('12');">문해교육 활성화</a></li>
+                          </ul>
+                        </li>
+                        <li><a href="javascript:fnGoPage('13');">오시는 길</a></li>
+                      </ul>
+                    </li>
+                    <li>
+                      <h3><a href="javascript:fnGoPage('2');">알림마당</a></h3>
+                      <ul>
+                        <li><a href="javascript:fnGoPage('14');">공지사항</a>
+                          <ul class="s-list">
+                            <li><a href="javascript:fnGoPage('14');">국가문해교육센터</a></li>
+                            <li><a href="javascript:fnGoPage('17');">시도문해교육센터</a></li>
+                            <li><a href="javascript:fnGoPage('67');">시·도교육청</a></li>
+                          </ul>
+                        </li>
+                        <li><a href="javascript:fnGoPage('15');">보도자료</a></li>
+                      </ul>
+                    </li>
+                    <li>
+                      <h3><a href="#" onclick="fnGoLinkUrl('4', '/edu/main.do');" title="새 창으로 이동">학습마당</a></h3>
+                      <ul>
+                        <li><a href="#" onclick="fnGoLinkUrl('97', '/edu/main.do');" title="새 창으로 이동">성인문해교육 e-학습터</a></li>
+                    </li>
+                    <li><a href="javascript:fnGoPage('83');">성인문해교육방송</a></li>
+                    <li><a href="javascript:fnGoPage('49');">생활문해교육</a></li>
+                  </ul>
+                  </li>
+                  <li>
+                    <h3><a href="javascript:fnGoPage('3');">자료마당</a></h3>
+                    <ul>
+                      <li><a href="javascript:fnGoPage('51');">사업운영자료</a></li>
+                      <li><a href="javascript:fnGoPage('60');">기관성과자료</a></li>
+                      <li><a href="javascript:fnGoPage('24');">연구자료</a></li>
+                      <li><a href="#" onclick="fnGoLinkUrl('76', 'http://xn--9d0b4b110dzyfc9bm8jlra38aha0155ar9b.kr/');" title="새 창으로 이동">시화전 자료</a>
+                        <ul class="s-list">
+                          <li><a href="#" onclick="fnGoLinkUrl('76', 'http://xn--9d0b4b110dzyfc9bm8jlra38aha0155ar9b.kr/');" title="새 창으로 이동">온라인 전시관</a></li>
+                          <li><a href="javascript:fnGoPage('20');">역대 수상작</a></li>
+                          <li><a href="javascript:fnGoPage('59');">우수작품집</a></li>
+                        </ul>
+                      </li>
+                      <li><a href="javascript:fnGoPage('71');">학력인정 증명</a>
+                        <ul class="s-list">
+                          <li><a href="javascript:fnGoPage('71');">학력인정 증명서 신청</a></li>
+                          <li><a href="javascript:fnGoPage('87');">학력인정 증명서 발급</a></li>
+                        </ul>
+                      </li>
+                    </ul>
+                  </li>
+                  <li>
+                    <h3><a href="javascript:fnGoPage('38');">소통마당</a></h3>
+                    <ul>
+                      <li><a href="javascript:fnGoPage('98');">뉴스레터</a></li>
+                      <li><a href="javascript:fnGoPage('22');">갤러리</a>
+                        <ul class="s-list">
+                          <li><a href="javascript:fnGoPage('22');">포토갤러리</a></li>
+                          <li><a href="javascript:fnGoPage('23');">영상갤러리</a></li>
+                        </ul>
+                      </li>
+                      <li><a href="javascript:fnGoPage('19');">자주하는 질문</a></li>
+                    </ul>
+                  </li>
+                  <li>
+                    <h3><a href="javascript:fnGoPage('5');">기관안내</a></h3>
+                    <ul>
+                      <li><a href="javascript:fnGoPage('31');">광역문해교육기관</a></li>
+                      <li><a href="javascript:fnGoPage('32');">프로그램 운영기관</a></li>
+                      <li><a href="javascript:fnGoPage('74');">학력인정 기관</a></li>
+                    </ul>
+                </div>
+              </div>
+              <!-- E : lnb -->
+            </div>
+          </div>
+        </div><!-- E : Header-->
+  <hr>
+
+
+  <div class="black_bg"></div>
+  <!-- Main Popup -->
+
+  <!--  container -->
+  <div class="container" id="colgroup">
+    <!-- visual 슬라이드 영역 -->
+    <div class="slider-area">
+      <!-- 		<li>
+                <div class="slider-img"><img src="https://le.or.kr/common/images/main/mainImg1.jpg" alt="문해능력은 모든 국민이 가져야할 권리입니다" /></div>
+            </li>
+            <li>
+                <div class="slider-img"><img src="https://le.or.kr/common/images/main/mainImg2.jpg" alt="2018년 9월 동시개최,제7회 전국 성인문해교육 시화전,대한민국 문해의 달 세상을 읽고 나를 쓰다,주최- 교육부,주관-국가평생교육진흥원,광역문해교육기관,전국문해교육단체,후원기관-한국교직원공제회,세종문화회관,유네스코한국위원회,협력기관-식품의약품안전처,금융감독원,도로교통공사,한국관광협의중앙회,키즈엠,스테들러" /></div>
+            </li>-->
+
+      <ul class="slider" id="slides">
+        <li>
+          <div class="slider-img"><a href="https://www.le.or.kr/contentDetailView.do?menuId=14&id=3003" title="현재창에서 이동"><img src="https://www.le.or.kr/download.do?fileId=5396" alt="초등중학 성인문해교과서 무상보급 신청" /></a></div>
+        </li>
+        <li>
+          <div class="slider-img"><a href="https://www.le.or.kr/contentDetailView.do?menuId=14&id=2982" title="현재창에서 이동"><img src="https://www.le.or.kr/download.do?fileId=5306" alt="시화전" /></a></div>
+        </li>
+        <li>
+          <div class="slider-img"><a href="https://www.youtube.com/playlist?list=PLjtQcRUOl5cKkZGyyJR-fSM1W5s31qUdr" target="_blank" title="새창으로 이동"><img src="https://www.le.or.kr/download.do?fileId=4587" alt="모두를 위한 범국민 생활밀착형 수업시간 모범생 미리보기" /></a></div>
+        </li>
+      </ul>
+    </div>
+    <!-- E : visual 슬라이드 영역 -->
+
+    <hr>
+
+    <!-- flaticon 6배너 -->
+    <div class="main_quick06_area row">
+      <ul>
+        <li class="col-lg-2 col-md-2 col-sm-2 col-xs-4"><a href="javascript:fnGoPage('26');" class="fm_01"><span>성인문해교육방송</span></a></li>
+        <li class="col-lg-2 col-md-2 col-sm-2 col-xs-4"><a href="javascript:fnGoPage('29');" class="fm_02"><span>생활문해교육</span></a></li>
+        <li class="col-lg-2 col-md-2 col-sm-2 col-xs-4"><a href="#" onclick="fnGoLinkUrl('97', '/edu/main.do');" title="새 창으로 이동" class="fm_03"><span>성인문해교육 e-학습터</span></a></li>
+        <li class="col-lg-2 col-md-2 col-sm-2 col-xs-4"><a href="javascript:fnGoPage('8');" class="fm_04"><span>성인문해능력조사</span></a></li>
+        <li class="col-lg-2 col-md-2 col-sm-2 col-xs-4"><a href="javascript:fnGoPage('17');" class="fm_05"><span>시도문해교육센터</span></a></li>
+        <li class="col-lg-2 col-md-2 col-sm-2 col-xs-4"><a href="javascript:fnGoPage('24');" class="fm_06"><span>연구자료</span></a></li>
+      </ul>
+    </div>
+    <!-- E: flaticon 배너 -->
+    <!-- flaticon 8배너 -->
+    <!-- E: flaticon 배너 -->
+
+    <hr>
+
+    <!-- 공지/ 보도/ 연구개발 -->
+    <div class="mboard-area row">
+      <div class="mb-notice col-lg-4 col-sm-4">
+        <h3>국가문해교육센터 공지사항</h3>
+        <ul>
+          <li class="fst-nt">
+            <a href="/contentDetailView.do?menuId=14&id=3005" class="ft-type1">[공지] 2024년 전국 성인문해교육 시화전 심사 결과 안내</a>
+            <span class="ico_new">새글</span>
+          </li>
+          <li><a href="/contentDetailView.do?menuId=14&id=3004">[공유] 2024년 대한민국 문해의 달 포스터 시안</a></li>
+          <li><a href="/contentDetailView.do?menuId=14&id=3003">[공고]2024년 성인문해교육 활성화를 위한 성인문해교과서 무상 보급 신청</a></li>
+          <li><a href="/contentDetailView.do?menuId=14&id=2998">[마감] 2024년 문해교육 컨퍼런스 & 문해교사 역량교육 실시</a></li>
+          <li><a href="/contentDetailView.do?menuId=14&id=2997">2024년 제21회 대한민국 평생학습대상 공고(~8.25)</a></li>
+          <li><a class="btn ico_more" href="/contentView.do?menuId=14" role="button">국가문해교육센터 공지사항 더보기</a></li>
+        </ul>
+      </div>
+      <div class="mb-news col-lg-4 col-sm-4">
+        <h3>보도자료</h3>
+        <ul>
+          <li class="fst-nt"> <a href="/contentDetailView.do?menuId=15&id=2975" class="ft-type1">[언론보도] 교육부·국가평생교육진흥원·로레알코리아 업무협약, 생활문해교육 미용제품의 건강한 사용 돕는다</a> </li>
+          <li><a href="/contentDetailView.do?menuId=15&id=2946">[언론보도] 한국맥도날드, 국가평생교육진흥원과 고연령층 대상 키오스크 현장실습 교육 박차 가한다</a></li>
+          <li><a href="/contentDetailView.do?menuId=15&id=2943">[보도자료] 2024년 성인 대상 기초 문해교육 및 무인안내기·금융앱 활용 등 생활밀착형 디지털 문해교육 실시</a></li>
+          <li><a href="/contentDetailView.do?menuId=15&id=2744">[보도자료] 2023년 11월, ‘문해, 배움은 늘 신기하다’ 특별 전시 및 기업 연계 디지털 문해 체험 부스 운영</a></li>
+          <li><a href="/contentDetailView.do?menuId=15&id=2737">[방송 보도] 국악방송-내 마음에 꽃이 피었습니다(라디오 다큐멘터리)</a></li>
+          <li><a class="btn ico_more" href="/contentView.do?menuId=15" role="button">보도자료 더보기</a></li>
+        </ul>
+      </div>
+      <div class="mb-program col-lg-4 col-sm-4">
+        <h3>시·도교육청 공지사항</h3>
+        <ul>
+          <li><span class="ico_file">첨부</span><a href="/contentDetailView.do?menuId=67&id=2980">2024년 대구광역시교육청 학력인정 문해교육프로그램 설치·지정 신청 공고</a></li>
+          <li><span class="ico_file">첨부</span><a href="/contentDetailView.do?menuId=67&id=2962">[경기/경기평생교육학습관] 2024년 1분기 학력인정 문해교육 관계자 워크숍 참여 안내</a></li>
+          <li><span class="ico_file">첨부</span><a href="/contentDetailView.do?menuId=67&id=2934">(부산광역시교육청) 2024년 부산광역시교육청 학력인정 문해교육 프로그램 신청(설치학교, 지정기관)</a></li>
+          <li class="bdn"><span class="ico_file">첨부</span><a href="/contentDetailView.do?menuId=67&id=2929">(경기도 안산교육지원청) 2024년 학력인정 문해교육 프로그램 설치·지정 공고</a></li>
+          <li class="bdn"><a class="btn ico_more" href="/contentView.do?menuId=67" role="button">시·도교육청 공지사항 더보기</a></li>
+        </ul>
+      </div>
+    </div>
+    <!-- E: 공지/ 보도/ 연구개발 -->
+
+    <hr>
+
+    <!-- 시화전 -->
+    <div class="m-contwrap row">
+      <!-- 시화전 시작 -->
+      <div class="poe-area col-lg-4 col-sm-4">
+        <h3>역대 수상작
+          <span class="tag type1">역대수상작</span>
+        </h3>
+        <ul class="clearfix">
+          <li>
+            <div class="poe_thumb">
+              <a href="/illPoemDetailView.do?menuId=20&id=2927"><img src="https://le.or.kr/download.do?fileId=5162" alt="2023년 전국 성인문해교육 시화전(글꿈상)" onerror="onImageError(this);"></a>
+            </div>
+            <dl>
+              <dt><a href="/illPoemDetailView.do?menuId=20&id=2927">2023년 전국 성인문해교육 시화전(글꿈상)</a></dt>
+              <dd><span class="poe_q">작품명</span><span class="poe_a subject">내가 보네 내가 읽네</span></dd>
+              <dd><span class="poe_q">출품자</span><span class="poe_a">박문옥</span></dd>
+              <dd><span class="poe_q">소속</span><span class="poe_a">경기 신갈야간학교</span></dd>
+            </dl>
+          </li>
+          <li>
+            <div class="poe_thumb">
+              <a href="/illPoemDetailView.do?menuId=20&id=2926"><img src="https://le.or.kr/download.do?fileId=5160" alt="2023년 전국 성인문해교육 시화전(글꿈상)" onerror="onImageError(this);"></a>
+            </div>
+            <dl>
+              <dt><a href="/illPoemDetailView.do?menuId=20&id=2926">2023년 전국 성인문해교육 시화전(글꿈상)</a></dt>
+              <dd><span class="poe_q">작품명</span><span class="poe_a subject">시가 신기해</span></dd>
+              <dd><span class="poe_q">출품자</span><span class="poe_a">이영자</span></dd>
+              <dd><span class="poe_q">소속</span><span class="poe_a">평택북부노인복지관</span></dd>
+            </dl>
+          </li>
+        </ul>
+        <a class="btn btn ico_more" href="/contentView.do?menuId=20" role="button">역대 수상작 더보기</a>
+      </div>
+      <!-- 시화전 끝 -->
+      <!-- E : 기관안내 시작 -->
+      <div class="map-area col-lg-8 col-sm-8">
+
+        <h3>시·도 문해교육센터</h3>
+        <div class="map_box mt10">
+          <div class="map" id="mapSvg">
+            <div id="krmap">
+              <span class="skip">광역 지도</span>
+            </div>
+            <p>지도를 클릭하시면 각 기관별 위치를 확인하실 수 있습니다.</p>
+            <div class="map_txt clearfix">
+              <div class="loc_div" id="loc_01"><a href="javascript:void(0);" onclick="javascript:fnDisplayRegion(this);" data-role="01" data-choice="mapsvgChoice">서울</a></div>
+              <div class="loc_div" id="loc_02"><a href="javascript:void(0);" onclick="javascript:fnDisplayRegion(this);" data-role="02" data-choice="mapsvgChoice">부산</a></div>
+              <div class="loc_div" id="loc_03"><a href="javascript:void(0);" onclick="javascript:fnDisplayRegion(this);" data-role="03" data-choice="mapsvgChoice">대구</a></div>
+              <div class="loc_div" id="loc_04"><a href="javascript:void(0);" onclick="javascript:fnDisplayRegion(this);" data-role="04" data-choice="mapsvgChoice">인천</a></div>
+              <div class="loc_div" id="loc_05"><a href="javascript:void(0);" onclick="javascript:fnDisplayRegion(this);" data-role="05" data-choice="mapsvgChoice">광주</a></div>
+              <div class="loc_div" id="loc_06"><a href="javascript:void(0);" onclick="javascript:fnDisplayRegion(this);" data-role="06" data-choice="mapsvgChoice">대전</a></div>
+              <div class="loc_div" id="loc_07"><a href="javascript:void(0);" onclick="javascript:fnDisplayRegion(this);" data-role="07" data-choice="mapsvgChoice">울산</a></div>
+              <div class="loc_div" id="loc_08"><a href="javascript:void(0);" onclick="javascript:fnDisplayRegion(this);" data-role="08" data-choice="mapsvgChoice">세종</a></div>
+              <div class="loc_div" id="loc_09"><a href="javascript:void(0);" onclick="javascript:fnDisplayRegion(this);" data-role="09" data-choice="mapsvgChoice">경기</a></div>
+              <div class="loc_div" id="loc_10"><a href="javascript:void(0);" onclick="javascript:fnDisplayRegion(this);" data-role="10" data-choice="mapsvgChoice">강원</a></div>
+              <div class="loc_div" id="loc_11"><a href="javascript:void(0);" onclick="javascript:fnDisplayRegion(this);" data-role="11" data-choice="mapsvgChoice">충북</a></div>
+              <div class="loc_div" id="loc_12"><a href="javascript:void(0);" onclick="javascript:fnDisplayRegion(this);" data-role="12" data-choice="mapsvgChoice">충남</a></div>
+              <div class="loc_div" id="loc_13"><a href="javascript:void(0);" onclick="javascript:fnDisplayRegion(this);" data-role="13" data-choice="mapsvgChoice">전북</a></div>
+              <div class="loc_div" id="loc_14"><a href="javascript:void(0);" onclick="javascript:fnDisplayRegion(this);" data-role="14" data-choice="mapsvgChoice">전남</a></div>
+              <div class="loc_div" id="loc_15"><a href="javascript:void(0);" onclick="javascript:fnDisplayRegion(this);" data-role="15" data-choice="mapsvgChoice">경북</a></div>
+              <div class="loc_div" id="loc_16"><a href="javascript:void(0);" onclick="javascript:fnDisplayRegion(this);" data-role="16" data-choice="mapsvgChoice">경남</a></div>
+              <div class="loc_div" id="loc_17"><a href="javascript:void(0);" onclick="javascript:fnDisplayRegion(this);" data-role="17" data-choice="mapsvgChoice">제주</a></div>
+             </div>
+            <dl id="regionInfo_01" style="display: none;">
+              <dt>서울특별시문해교육센터<a href="/contentView.do?menuId=31&pageIndex=2" class="btn btn-stype wpd bc4" title="광역문해교육기관리스트 바로가기">바로가기</a></dt>
+              <dd><span class="ico_map">주소</span><span>서울 마포구 새창로 7 (도화동, 서울대학교 총동창회 장학빌딩) 14층 서울특별시평생교육진흥원</span></dd>
+            </dl>
+            <dl id="regionInfo_02" style="display: none;">
+              <dt>부산광역시문해교육센터<a href="/contentView.do?menuId=31&pageIndex=3" class="btn btn-stype wpd bc4" title="광역문해교육기관리스트 바로가기">바로가기</a></dt>
+              <dd><span class="ico_map">주소</span><span>부산광역시 동래구 차밭골로 38-1 (온천동) 1층</span></dd>
+            </dl>
+            <dl id="regionInfo_03" style="display: none;">
+              <dt>대구광역시문해교육센터<a href="/contentView.do?menuId=31&pageIndex=4" class="btn btn-stype wpd bc4" title="광역문해교육기관리스트 바로가기">바로가기</a></dt>
+              <dd><span class="ico_map">주소</span><span>대구 북구 연암로 40 (산격동, 대구광역시 산격청사) 대구시행복진흥사회서비스원 2동 3층</span></dd>
+            </dl>
+            <dl id="regionInfo_04" style="display: none;">
+              <dt>인천광역시문해교육센터<a href="/contentView.do?menuId=31&pageIndex=5" class="btn btn-stype wpd bc4" title="광역문해교육기관리스트 바로가기">바로가기</a></dt>
+              <dd><span class="ico_map">주소</span><span>인천 남동구 인주대로 585 (구월동, 한국씨티은행) 한국씨티은행빌딩 12층</span></dd>
+            </dl>
+            <dl id="regionInfo_05" style="display: none;">
+              <dt>광주광역시문해교육센터<a href="/contentView.do?menuId=31&pageIndex=6" class="btn btn-stype wpd bc4" title="광역문해교육기관리스트 바로가기">바로가기</a></dt>
+              <dd><span class="ico_map">주소</span><span>광주 광산구 소촌로152번길 53-27 (소촌동, 시공무원교육원) 4층 광주인재평생교육진흥원</span></dd>
+            </dl>
+            <dl id="regionInfo_06" style="display: none;">
+              <dt>대전광역시문해교육센터<a href="/contentView.do?menuId=31&pageIndex=7" class="btn btn-stype wpd bc4" title="광역문해교육기관리스트 바로가기">바로가기</a></dt>
+              <dd><span class="ico_map">주소</span><span>대전 중구 중앙로 101 (선화동) 대전평생교육진흥원 3층 지역협력부 대전문해교육센터</span></dd>
+            </dl>
+            <dl id="regionInfo_07" style="display: none;">
+              <dt>울산광역시문해교육센터<a href="/contentView.do?menuId=31&pageIndex=8" class="btn btn-stype wpd bc4" title="광역문해교육기관리스트 바로가기">바로가기</a></dt>
+              <dd><span class="ico_map">주소</span><span>울산 남구 삼산중로 6 (달동) 울산연구원 1층</span></dd>
+            </dl>
+            <dl id="regionInfo_08" style="display: none;">
+              <dt>세종특별자치시문해교육센터<a href="/contentView.do?menuId=31&pageIndex=9" class="btn btn-stype wpd bc4" title="광역문해교육기관리스트 바로가기">바로가기</a></dt>
+              <dd><span class="ico_map">주소</span><span>세종특별자치시 갈매로 387 (어진동) 정부세종청사 문화관 2층</span></dd>
+            </dl>
+            <dl id="regionInfo_09" style="display: none;">
+              <dt>경기도문해교육센터<a href="/contentView.do?menuId=31&pageIndex=10" class="btn btn-stype wpd bc4" title="광역문해교육기관리스트 바로가기">바로가기</a></dt>
+              <dd><span class="ico_map">주소</span><span>경기 수원시 장안구 파장천로 95 (파장동) </span></dd>
+            </dl>
+            <dl id="regionInfo_10" style="display: none;">
+              <dt>강원특별자치도문해교육센터<a href="/contentView.do?menuId=31&pageIndex=11" class="btn btn-stype wpd bc4" title="광역문해교육기관리스트 바로가기">바로가기</a></dt>
+              <dd><span class="ico_map">주소</span><span>강원 춘천시 안마산로 89 (퇴계동) 1층 강원인재육성평생교육진흥원</span></dd>
+            </dl>
+            <dl id="regionInfo_11" style="display: none;">
+              <dt>충청북도문해교육센터<a href="/contentView.do?menuId=31&pageIndex=12" class="btn btn-stype wpd bc4" title="광역문해교육기관리스트 바로가기">바로가기</a></dt>
+              <dd><span class="ico_map">주소</span><span>충청북도 청주시 상당구 가덕면 은행상야로 425 도민교육관 1층</span></dd>
+            </dl>
+            <dl id="regionInfo_12" style="display: none;">
+              <dt>충청남도문해교육센터<a href="/contentView.do?menuId=31&pageIndex=13" class="btn btn-stype wpd bc4" title="광역문해교육기관리스트 바로가기">바로가기</a></dt>
+              <dd><span class="ico_map">주소</span><span>충남 홍성군 홍북읍 상하천로 58 (신경리, CDC 충남개발공사) 4층 충청남도평생교육진흥원</span></dd>
+            </dl>
+            <dl id="regionInfo_13" style="display: none;">
+              <dt>전북특별자치도문해교육센터<a href="/contentView.do?menuId=31&pageIndex=14" class="btn btn-stype wpd bc4" title="광역문해교육기관리스트 바로가기">바로가기</a></dt>
+              <dd><span class="ico_map">주소</span><span>전북 전주시 완산구 백제대로 428 (서신동, 유디치과) 2층 전북특별자치도평생교육장학진흥원</span></dd>
+            </dl>
+            <dl id="regionInfo_14" style="display: none;">
+              <dt>전라남도문해교육센터<a href="/contentView.do?menuId=31&pageIndex=15" class="btn btn-stype wpd bc4" title="광역문해교육기관리스트 바로가기">바로가기</a></dt>
+              <dd><span class="ico_map">주소</span><span>전남 무안군 삼향읍 후광대로 282 (남악리, 전남전문건설회관) 8층, 전남인재평생교육진흥원</span></dd>
+            </dl>
+            <dl id="regionInfo_15" style="display: none;">
+              <dt>경상북도문해교육센터<a href="/contentView.do?menuId=31&pageIndex=16" class="btn btn-stype wpd bc4" title="광역문해교육기관리스트 바로가기">바로가기</a></dt>
+              <dd><span class="ico_map">주소</span><span>경북 경산시 진량읍 봉황길 34 (봉회리, 경북학숙) 1층 경상북도인재평생교육진흥원</span></dd>
+            </dl>
+            <dl id="regionInfo_16" style="display: none;">
+              <dt>경상남도문해교육센터<a href="/contentView.do?menuId=31&pageIndex=17" class="btn btn-stype wpd bc4" title="광역문해교육기관리스트 바로가기">바로가기</a></dt>
+              <dd><span class="ico_map">주소</span><span>경남 창원시 성산구 용지로 248 (용호동, 경남발전연구원) 3층 경상남도평생교육진흥원</span></dd>
+            </dl>
+            <dl id="regionInfo_17" style="display: none;">
+              <dt>제주특별자치도문해교육센터<a href="/contentView.do?menuId=31&pageIndex=18" class="btn btn-stype wpd bc4" title="광역문해교육기관리스트 바로가기">바로가기</a></dt>
+              <dd><span class="ico_map">주소</span><span>제주특별자치도 제주시 서사로 43 (삼도이동) 4층 제주평생교육장학진흥원</span></dd>
+            </dl>
+          </div>
+        </div>
+      </div>
+      <!-- E : 기관안내 끝 -->
+    </div>
+    <form name="popFrm" id="popFrm" method="post">
+      <input type="hidden" name="id" value="">
+    </form>
+  </div><!-- /.container -->
+  <script type="text/javaScript">
+$(document).ready(function() {
+	var params = {
+		menuId : POP_MENU_ID
+		,categoryId : POP_CATEGORY_PT_ID
+	}
+	searchIt(params);
+})
+
+ $(".slider-area").on("focusin", function() {
+	 $('.slider-area').css( "border", "1px solid #54bfea");
+    });
+
+   $(".slider-area").on("focusout", function() {
+	$('.slider-area').css( "border", "");
+ });
+
+var fnDisplayRegion = function(obj){
+	$('#mapSvg dl').hide();
+	var index = $(obj).attr('data-role');
+	$(".loc_div a").removeAttr("title");
+	$(obj).attr({title:$(obj).text()+" 선택됨"});
+	$('#regionInfo_'+index).show();
+}
+
+function searchIt(params) {
+	$.ajax({
+		type:'post',
+		url: '/contentList.do',
+		async: true,
+		cache: false,
+		dataType: 'json',
+		data: params,
+		beforeSend: function() {
+		},
+		success: function(result) {
+			var popupList = result.contentList;
+			var left = 100; // 팝업 좌측 여백 초기값
+			var top = 100; // 팝업 상단 여백 초기값
+			if (popupList != null) {
+				for (var i=0; i<popupList.length; i++) {
+					var popup = popupList[i];
+					var width = popup.addContent1; // 팝업너비
+					var height = popup.addContent2; // 팝업높이
+					left += 50;
+					top += 50;
+					if (getCookie(popup.id) != "done") {
+						// window.open("mainPopup('"+popup.id+"')", popup.name, 'width='+width+',height='+height+',left='+left+',top='+top+',scrollbars=yes, realzable=yes');
+// 						window.open("mainPopup.do?id="+popup.id, popup.title, 'width='+width+',height='+height+',left='+left+',top='+top+',scrollbars=yes, realzable=yes');
+						window.open("", popup.title, 'width='+width+',height='+height+',left='+left+',top='+top+',scrollbars=yes, realzable=yes');
+						$("#popFrm").find("input[name='id']").val(popup.id);
+						$("#popFrm").attr({action : "mainPopup.do", target : popup.title});
+						$("#popFrm").submit();
+					}
+				}
+			}
+		}
+	});
+}
+</script>
+
+  <!-- top button -->
+  <a id="movetop" href="#" title="맨위로 가기"><span>위로</span></a>
+  <!-- E : top button -->
+  <hr>
+
+  <!-- footer -->
+  <div id="footer">
+    <div class="footer-top-wrap clearfix">
+      <div class="terms_row">
+        <ul class="at_list fl-l">
+          <li><a href="javascript:fnGoPage('34')"><span>저작권보호정책</span></a></li>
+          <li><a href="javascript:fnGoPage('35')"><span>이메일무단수집거부</span></a></li>
+          <li><a href="javascript:fnGoPage('36')"><span>사이트맵</span></a></li>
+        </ul>
+
+        <div class="link-wrap">
+          <ul class="sns-rt">
+            <li><a href="https://story.kakao.com/ch/literacy" target="_blank" title="새창으로 이동"><span class="btn btn-cao">카카오스토리</span></a></li>
+            <li><a href="http://blog.naver.com/literacynile" target="_blank" title="새창으로 이동"><span class="btn btn-blg">블로그</span></a></li>
+            <li><a href="https://www.youtube.com/channel/UC1kwfXZ-VEG9ZJZJTWa2SXg" target="_blank" title="새창으로 이동"><span class="btn btn-ytb">유투브</span></a></li>
+          </ul>
+          <div class="dropup">
+            <button class="btn link-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-expanded="true">
+              관련사이트 바로가기
+              <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu2">
+              <li><a role="menuitem" tabindex="-1" href="http://www.nile.or.kr" target="_blank" title="새창으로 이동">국가평생교육진흥원</a></li>
+              <li><a role="menuitem" tabindex="-1" href="http://www.lifelongedu.go.kr" target="_blank" title="새창으로 이동">평생학습포털 늘배움</a></li>
+              <li><a role="menuitem" tabindex="-1" href="http://www.edu4mc.or.kr" target="_blank" title="새창으로 이동">중앙다문화교육센터</a></li>
+              <li><a role="menuitem" tabindex="-1" href="http://www.parents.go.kr" target="_blank" title="새창으로 이동">학부모On누리</a></li>
+              <li><a role="menuitem" tabindex="-1" href="http://lledu.nile.or.kr" target="_blank" title="새창으로 이동">평생교육사 자격관리</a></li>
+              <li><a role="menuitem" tabindex="-1" href="http://www.cb.or.kr" target="_blank" title="새창으로 이동">학점은행제</a></li>
+              <li><a role="menuitem" tabindex="-1" href="http://bdes.nile.or.kr" target="_blank" title="새창으로 이동">독학학위제</a></li>
+              <li><a role="menuitem" tabindex="-1" href="http://www.all.go.kr" target="_blank" title="새창으로 이동">평생학습계좌제</a></li>
+              <li><a role="menuitem" tabindex="-1" href="http://www.kmooc.kr" target="_blank" title="새창으로 이동">K-MOOC</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="area_info">
+      <div class="ai_inner">
+        <p class="ai_tx">
+          <span class="ft-brand">국가문해교육센터</span>
+          04520 서울 중구 청계천로 14 (무교동, 국가평생교육진흥원)<br />TEL : 1600-6759 FAX : 02-3780-9962 E-mail : 16006759@nile.or.kr
+          <br />COPYRIGHT © National Institute for Lifelong Education. All rights reserved
+        </p>
+      </div>
+      <div class="ai_link">
+        <a title="새창" href="http://wa.or.kr/board/list.asp?BoardID=0006" target="_blank">
+          <img class="wa" alt="(사)한국장애인단체총연합회 한국웹접근성인증평가원 웹 접근성 우수사이트 인증마크(WA인증마크)"
+            src="https://le.or.kr/common/images/common/wa_mark.png" width="88px" height="62px" />
+        </a>
+      </div>
+    </div>
+  </div>
+  <!-- E : footer -->
+
+
+
+
+
+
+
+  <div class="tc mgt25">
+    <button type="button" class="btn btn-btype wpd bc2 open-self-diagnosis">자가 진단 하러가기</button>
+  </div>
+  <!-- //성인 기초 문해력 자가진단 시스템 확인용 버튼 -->
+
+
+  <section id="self-diagnosis" class="self-diagnosis"><!-- 레이아웃이 타입 B,C(예시와 질문이 좌우)일 경우 클래스 type-b 추가 -->
+    <div class="inner-area">
+      <div class="top-area">
+        <h1 class="title">성인 기초 문해력 자가진단 시스템</h1>
+        <div class="step-area">
+          <div class="item-list">
+            <span class="item on">1</span><!-- 진행이 완료된 단계의 경우 클래스 on -->
+            <span class="item active">2</span><!-- 현재 진행 중인 단계의 경우 클래스 active -->
+            <span class="item">3</span>
+            <span class="item">4</span>
+          </div>
+        </div>
+      </div>
+      <!-- //top-area -->
+
+      <div class="section-area">
+        <!-- <div class="title-area">
+          <h2 class="title">다음을 보고 물음에 답해주세요.</h2>
+        </div> -->
+        <div class="title-area type-voice">
+          <h2 class="title">
+            다음을 듣고 물음에 답해주세요.
+            <span class="info">듣기버튼을 눌러 <strong>음성안내를 확인</strong>해주세요.</span>
+          </h2>
+        </div>
+        <div class="contents-area">
+          <div class="example-area">
+            <div class="example-inner">
+              <img src="../assets/images/self_diagnosis/img_sample01.png" alt="샘플 이미지 - 대체 텍스트 내용 참고" longdesc="#img-longdesc">
+              <div id="img-longdesc" class="blind-box">
+                이미지 대체 텍스트 영역
+              </div>
+            </div>
+          </div>
+          <!-- //example-area -->
+
+          <div class="question-area">
+
+            <div class="item-area">
+              <div class="item-question">
+                신입사원 직무 연수 개강은 언제일까요?
+              </div>
+              <div class="item-answer">
+                <div class="form-answer">
+                  <span class="answer">답:</span>
+                  <input type="text" title="">
+                  <span class="spacing">년</span>
+                  <input type="text" title="">
+                  <span class="spacing">월</span>
+                  <input type="text" title="">
+                  <span class="spacing">일</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- //question-area -->
+        </div>
+        <!-- //contents-area -->
+      </div>
+      <!-- //section-area -->
+
+      <div class="bottom-area">
+        <div class="cont-left">
+          <button type="button" class="self-diagnosis-btn-zoom">확대하기</button>
+        </div>
+        <div class="cont-right">
+          <button type="button" class="self-diagnosis-btn-out">나가기</button>
+          <button type="button" class="self-diagnosis-btn-next">다음</button>
+        </div>
+      </div>
+      <!-- //bottom-area -->
+      <button type="button" class="self-diagnosis-btn-close">팝업 닫기</button>
+    </div>
+  </section>
+  <!-- //성인 기초 문해력 자가진단 시스템 -->
+
+  <script>
+    // 퍼블 참고용
+    $(document).ready(function() {
+      $('.open-self-diagnosis').on('click', function(){
+        $('body').addClass('self-diagnosis-active');
+      });
+      $('.self-diagnosis-btn-close').on('click', function(){
+        $('body').removeClass('self-diagnosis-active');
+      });
+    });
+  </script>
+
+
+
+
+
+
+</body>
+</html>

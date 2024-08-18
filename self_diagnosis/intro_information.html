@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=0, user-scalable=no" />
+  <meta name="keywords" content="문해, 문해교육, 국가문해교육센터">
+  <meta name="description" content="국가문해교육센터 홈페이지에서 다양하고 유용한 정보를 만나 보세요">
+  <meta name="Subject" content="국가문해교육센터" />
+  <meta name="Title" content="국가평생교육진흥원&nbsp;국가문해교육센터" />
+  <meta name="format-detection" content="telephone=no" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  <meta name="google-site-verification" content="mFyReWyXu-Y5tbR2Lek1rI5La210RngJ3ZS_WJkzQ_8" />
+  <meta name="naver-site-verification" content="258592b172599121769cdf6dda93eb5fa9edb56b" />
+  <meta property="og:title" content="국가평생교육진흥원&nbsp;국가문해교육센터">
+  <meta property="og:url" content="https://www.le.or.kr">
+  <meta property="og:description" content="국가문해교육센터 홈페이지에서 다양하고 유용한 정보를 만나 보세요.">
+  <link rel="icon" href="https://le.or.kr/common/images/common/favicon.ico">
+
+  <title>국가문해교육센터</title>
+
+  <!-- CSS -->
+  <link href="https://le.or.kr/common/css/bootstrap.css" rel="stylesheet">
+  <link href="https://le.or.kr/common/css/font.css" rel="stylesheet"><!-- font : SpoqaHanSans -->
+  <link href="https://le.or.kr/common/css/default.css?ipDate=20240811063027" rel="stylesheet">
+  <link href="https://le.or.kr/common/css/common.css?ipDate=20240811063027" rel="stylesheet">
+  <link href="https://le.or.kr/common/css/button.css?ipDate=20240811063027" rel="stylesheet">
+  <link href="https://le.or.kr/common/css/main.css?ipDate=20240811063027" rel="stylesheet">
+
+  <link href="../assets/css/self-diagnosis.css" rel="stylesheet">
+
+  <!--[if lt IE 9]><script src="js/ie8-responsive-file-warning.js"></script><![endif]-->
+  <!-- javascript -->
+  <script src="https://le.or.kr/common/js/ie-emulation-modes-warning.js"></script>
+  <script src="https://le.or.kr/common/js/jquery.min.js"></script>
+  <script src="https://le.or.kr/common/js/bootstrap.min.js"></script>
+  <script src="https://le.or.kr/common/js/jquery.slides.min.js"></script>
+  <script src="https://le.or.kr/common/js/common_ui.js?ipDate=20240811063027"></script>
+  <script src="https://le.or.kr/common/js/raphael-min.js"></script>
+  <script src="https://le.or.kr/common/js/map.js"></script>
+  <script src="https://le.or.kr/common/js/comUtil.js?ipDate=20240811063027"></script>
+  <script src="https://le.or.kr/common/js/comConstant.js?ipDate=20240811063027"></script>
+</head>
+
+<body class="self-diagnosis-active">
+
+
+  <div class="tc mgt25">
+    <button type="button" class="btn btn-btype wpd bc2 open-self-diagnosis">자가 진단 하러가기</button>
+  </div>
+  <!-- //성인 기초 문해력 자가진단 시스템 확인용 버튼 -->
+
+
+  <section id="self-diagnosis" class="self-diagnosis"><!-- 레이아웃이 타입 B,C(예시와 질문이 좌우)일 경우 클래스 type-b 추가 -->
+    <div class="inner-area">
+      <div class="top-area">
+        <h1 class="title">성인 기초 문해력 자가진단 시스템</h1>
+        <div class="step-area">
+          <div class="item-list">
+            <span class="item on">1</span><!-- 진행이 완료된 단계의 경우 클래스 on -->
+            <span class="item active">2</span><!-- 현재 진행 중인 단계의 경우 클래스 active -->
+            <span class="item">3</span>
+            <span class="item">4</span>
+          </div>
+        </div>
+      </div>
+      <!-- //top-area -->
+
+      <div class="section-area">
+        <div class="title-area">
+          <h2 class="title">개인배경 문항</h2>
+        </div>
+        <div class="box-style">
+          <table class="table-style">
+            <caption>개인배경 문항의 구분, 항목, 내용 정보를 제공합니다.</caption>
+            <colgroup>
+              <col style="width: 12%;">
+              <col style="width: 13%;">
+              <col>
+            </colgroup>
+            <thead>
+              <tr>
+                <th scope="col">구분</th>
+                <th scope="col">항목</th>
+                <th scope="col">내용</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row" rowspan="7">개인 정보 <br>(필수)</th>
+                <th scope="row" class="text-left">이름</th>
+                <td class="text-left">
+                  <div class="form-group">
+                    <input type="text" placeholder="이름기재" title="이름">
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <th scope="row" class="text-left">성별</th>
+                <td class="text-left">
+                  <div class="form-group">
+                    <span class="form-box">
+                      <input type="radio" name="self-diagnosis-radio01" id="radio01-01">
+                      <label for="radio01-01">남</label>
+                    </span>
+                    <span class="form-box">
+                      <input type="radio" name="self-diagnosis-radio01" id="radio01-02">
+                      <label for="radio01-02">여</label>
+                    </span>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <th scope="row" class="text-left">생년월일</th>
+                <td class="text-left">
+                  <div class="form-group">
+                    <input type="text" placeholder="8자리 생년월일" title="생년월일">
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <th scope="row" class="text-left">지역</th>
+                <td class="text-left">
+                  <div class="form-group in2">
+                    <select title="지역 선택">
+                      <option value="">지역1</option>
+                      <option value="">지역1</option>
+                      <option value="">지역1</option>
+                      <option value="">지역1</option>
+                    </select>
+                    <select title="지역 상세 선택">
+                      <option value="">지역2</option>
+                      <option value="">지역2</option>
+                      <option value="">지역2</option>
+                      <option value="">지역2</option>
+                    </select>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <th scope="row" class="text-left">학력</th>
+                <td class="text-left">
+                  <div class="form-group">
+                    <span class="form-box">
+                      <input type="radio" name="self-diagnosis-radio02" id="radio02-01">
+                      <label for="radio02-01">무학</label>
+                    </span>
+                    <span class="form-box">
+                      <input type="radio" name="self-diagnosis-radio02" id="radio02-02">
+                      <label for="radio02-02">초졸</label>
+                    </span>
+                    <span class="form-box">
+                      <input type="radio" name="self-diagnosis-radio02" id="radio02-03">
+                      <label for="radio02-03">중졸</label>
+                    </span>
+                    <span class="form-box">
+                      <input type="radio" name="self-diagnosis-radio02" id="radio02-04">
+                      <label for="radio02-04">고졸</label>
+                    </span>
+                    <span class="form-box">
+                      <input type="radio" name="self-diagnosis-radio02" id="radio02-05">
+                      <label for="radio02-05">대졸</label>
+                    </span>
+                    <span class="form-box">
+                      <input type="radio" name="self-diagnosis-radio02" id="radio02-06">
+                      <label for="radio02-06">대학원졸</label>
+                    </span>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <th scope="row" class="text-left">월평균가구소득</th>
+                <td class="text-left">
+                  <div class="form-group">
+                    <span class="form-box">
+                      <input type="radio" name="self-diagnosis-radio03" id="radio03-01">
+                      <label for="radio03-01">100만원 미만</label>
+                    </span>
+                    <span class="form-box">
+                      <input type="radio" name="self-diagnosis-radio03" id="radio03-02">
+                      <label for="radio03-02">100~300만원 미만</label>
+                    </span>
+                    <span class="form-box">
+                      <input type="radio" name="self-diagnosis-radio03" id="radio03-03">
+                      <label for="radio03-03">300~400만원 미만</label>
+                    </span>
+                    <span class="form-box">
+                      <input type="radio" name="self-diagnosis-radio03" id="radio03-04">
+                      <label for="radio03-04">400~500만원 미만</label>
+                    </span>
+                    <span class="form-box">
+                      <input type="radio" name="self-diagnosis-radio03" id="radio03-05">
+                      <label for="radio03-05">500~600만원 미만</label>
+                    </span>
+                    <span class="form-box">
+                      <input type="radio" name="self-diagnosis-radio03" id="radio03-06">
+                      <label for="radio03-06">600~700만원 미만</label>
+                    </span>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <th scope="row" class="text-left">모국어</th>
+                <td class="text-left">
+                  <div class="form-group">
+                    <span class="form-box">
+                      <input type="radio" name="self-diagnosis-radio04" id="radio04-01">
+                      <label for="radio04-01">한국어</label>
+                    </span>
+                    <span class="form-box">
+                      <input type="radio" name="self-diagnosis-radio04" id="radio04-02">
+                      <label for="radio04-02">외국어</label>
+                    </span>
+                    <span class="form-child">
+                      ( <input type="text" placeholder="텍스트" title="외국어" style="width: 160px;"> ) 외국어일 경우 직접 입력
+                    </span>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <th scope="row" rowspan="2">학습 정보 2 <br>(중졸 이상)</th>
+                <th scope="row" class="text-left">문해교육 참여 여부</th>
+                <td class="text-left">
+                  <div class="form-group">
+                    <span class="form-box">
+                      <input type="radio" name="self-diagnosis-radio05" id="radio05-01">
+                      <label for="radio05-01">참여한 적 없음</label>
+                    </span>
+                    <span class="form-box">
+                      <input type="radio" name="self-diagnosis-radio05" id="radio05-02">
+                      <label for="radio05-02">참여 중</label>
+                    </span>
+                    <span class="form-box">
+                      <input type="radio" name="self-diagnosis-radio05" id="radio05-03">
+                      <label for="radio05-03">과거에 참여한 적 있음</label>
+                    </span>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <th scope="row" class="text-left">문해학습 단계</th>
+                <td class="text-left">
+                  <div class="form-group">
+                    <span class="form-box">
+                      <input type="radio" name="self-diagnosis-radio06" id="radio06-01">
+                      <label for="radio06-01">초등 (1단계, 2단계, 3단계)</label>
+                    </span>
+                    <span class="form-box">
+                      <input type="radio" name="self-diagnosis-radio06" id="radio06-02">
+                      <label for="radio06-02">중학 (1단계, 2단계, 3단계)</label>
+                    </span>
+                    <span class="form-box">
+                      <input type="radio" name="self-diagnosis-radio06" id="radio06-03">
+                      <label for="radio06-03">기타</label>
+                    </span>
+                    <span class="form-child">
+                      ( <input type="text" title="기타" style="width: 60px;"> )
+                    </span>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <th scope="row" rowspan="2">학습 정보1 <br>(중졸 미만)</th>
+                <th scope="row" class="text-left">평생교육 참여 여부</th>
+                <td class="text-left">
+                  <div class="form-group">
+                    <span class="form-box">
+                      <input type="radio" name="self-diagnosis-radio07" id="radio07-01">
+                      <label for="radio07-01">참여한 적 없음</label>
+                    </span>
+                    <span class="form-box">
+                      <input type="radio" name="self-diagnosis-radio07" id="radio07-02">
+                      <label for="radio07-02">참여 중</label>
+                    </span>
+                    <span class="form-box">
+                      <input type="radio" name="self-diagnosis-radio07" id="radio07-03">
+                      <label for="radio07-03">과거에 참여한 적 있음</label>
+                    </span>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <th scope="row" class="text-left">독서량</th>
+                <td class="text-left">
+                  <div class="form-group">
+                    <span>
+                      월 평균 독서량 ( <input type="text" title="독서량" style="width: 60px;"> ) 권
+                    </span>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <!-- //section-area -->
+
+      <div class="bottom-area">
+        <div class="cont-left">
+          <!-- <button type="button" class="self-diagnosis-btn-zoom">확대하기</button> -->
+        </div>
+        <div class="cont-right">
+          <button type="button" class="self-diagnosis-btn-out">나가기</button>
+          <button type="button" class="self-diagnosis-btn-next">진단시작</button>
+        </div>
+      </div>
+      <!-- //bottom-area -->
+      <button type="button" class="self-diagnosis-btn-close">팝업 닫기</button>
+    </div>
+  </section>
+  <!-- //성인 기초 문해력 자가진단 시스템 -->
+
+  <script>
+    // 퍼블 참고용
+    $(document).ready(function() {
+      $('.open-self-diagnosis').on('click', function(){
+        $('body').addClass('self-diagnosis-active');
+      });
+      $('.self-diagnosis-btn-close').on('click', function(){
+        $('body').removeClass('self-diagnosis-active');
+      });
+    });
+  </script>
+</body>
+</html>
