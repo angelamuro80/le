@@ -54,7 +54,7 @@
   <!-- //성인 기초 문해력 자가진단 시스템 확인용 버튼 -->
 
 
-  <section id="self-diagnosis" class="self-diagnosis"><!-- 레이아웃이 타입 B,C(예시와 질문이 좌우)일 경우 클래스 type-b 추가 -->
+  <section id="self-diagnosis" class="self-diagnosis type-b"><!-- 레이아웃이 타입 B,C(예시와 질문이 좌우)일 경우 클래스 type-b 추가 -->
     <div class="inner-area">
       <div class="top-area">
         <h1 class="title">성인 기초 문해력 자가진단 시스템</h1>
@@ -72,17 +72,114 @@
       <div class="section-area">
         <div class="title-area">
           <h2 class="title">
-            다음을 듣고 물음에 답해주세요.
-            <span class="info">듣기버튼을 눌러 <strong>음성안내를 확인</strong>해주세요.</span>
+            가정통신문을 보고 물음에 답해주세요.
           </h2>
-          <button type="button" class="btn-voice">듣기</button>
         </div>
         <div class="contents-area">
           <div class="example-area">
             <div class="example-inner">
-              <img src="../assets/images/self_diagnosis/img_examples_a_ga_1.png" alt="예시 이미지 - 대체 텍스트 내용 참고" longdesc="#img-longdesc">
+              <img src="../assets/images/self_diagnosis/img_examples_b_ga_11.png" alt="예시 이미지 - 대체 텍스트 내용 참고" longdesc="#img-longdesc">
               <div id="img-longdesc" class="blind-box">
-                신입사원 여러분을 우리회사 OO이 되신 것을 환영합니다! 2030년 신입 OO 직무 연수 - 일시: 2030년 3월 5일(월) 오전 11시, 주최: (주)우리회사, 장소: 우리회사 1F A홀
+                <strong>가정통신문</strong>
+                <p>여름철에는 폭염으로 인한 온열질환(열사병, 열탈진 등)의 발생률이 높으므로 야외 활동 시 각별한 주의가 필요합니다.</p>
+                <table>
+                  <caption>[온열질환 예방 건강 수칙]의 구분, 내용 정보를 제공합니다.</caption>
+                  <thead>
+                    <tr>
+                      <th scope="col">구분</th>
+                      <th scope="col">내용</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>폭염이란?</td>
+                      <td>
+                        폭염주의보 - 일 최고 체감온도 33℃ 이상인 상태가 2일 이상 지속될 것으로 예상될 때 <br>
+                        폭염경보 - 일 최고체감온도 35℃ 이상인 상태가 2일 이상 지속될 것으로 예상될 때
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>건강 수칙</td>
+                      <td>가장 더운 시간대(낮 12시~오후 5시)에는 야외 작업, 운동 등을 자제하고 시원한 곳에 머물기 <br>기온, 폭염특보 등 기상 상황을 수시로 확인하기</td>
+                    </tr>
+                  </tbody>
+                </table>
+                <table>
+                  <caption>폭염일수에 따른 온영질환자의 폭염일수(일), 온열질환자(명) 정보를 제공합니다.</caption>
+                  <thead>
+                    <tr>
+                      <th scope="col"></th>
+                      <th scope="col">폭염일수(일)</th>
+                      <th scope="col">온열질환자(명)</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th scope="row">2011년</th>
+                      <td>6.5</td>
+                      <td>443</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">2012년</th>
+                      <td>14</td>
+                      <td>984</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">2013년</th>
+                      <td>16.6</td>
+                      <td>1189</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">2014년</th>
+                      <td>6.6</td>
+                      <td>556</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">2015년</th>
+                      <td>9.6</td>
+                      <td>1056</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">2016년</th>
+                      <td>22</td>
+                      <td>2125</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">2017년</th>
+                      <td>13.5</td>
+                      <td>1574</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">2018년</th>
+                      <td>31</td>
+                      <td>4526</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">2019년</th>
+                      <td>12.9</td>
+                      <td>1841</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">2020년</th>
+                      <td>7.7</td>
+                      <td>1078</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">2021년</th>
+                      <td>11.8</td>
+                      <td>1376</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">2022년</th>
+                      <td>10.6</td>
+                      <td>1564</td>
+                    </tr>
+                  </tbody>
+                </table>
+
+              </div>
+              <div class="box-source">
+                출처 : 질병관리청(2023). 폭염대비와 온열질환 예방을 위한 건강 수칙 바로알기, p.6, p.21.
               </div>
             </div>
           </div>
@@ -91,26 +188,13 @@
           <div class="question-area">
             <div class="item-area">
               <div class="item-question">
-                위 안내문 중 OO에 해당하는 글자를 선택해 주세요.
+                폭염경보 기준은 일 최고 체감온도 몇 ℃ 이상일까요?
               </div>
               <div class="item-answer">
-                <div class="form-group">
-                  <span class="form-box">
-                    <input type="radio" name="self-diagnosis-radio" id="radio01">
-                    <label for="radio01">직원</label>
-                  </span>
-                  <span class="form-box">
-                    <input type="radio" name="self-diagnosis-radio" id="radio02">
-                    <label for="radio02">사원</label>
-                  </span>
-                  <span class="form-box">
-                    <input type="radio" name="self-diagnosis-radio" id="radio03">
-                    <label for="radio03">가족</label>
-                  </span>
-                  <span class="form-box">
-                    <input type="radio" name="self-diagnosis-radio" id="radio04">
-                    <label for="radio04">신입</label>
-                  </span>
+                <div class="form-answer">
+                  <span class="answer">답 :</span>
+                  <input type="text" title="답변">
+                  <span class="spacing">℃ 이상</span>
                 </div>
               </div>
             </div>

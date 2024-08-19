@@ -54,7 +54,7 @@
   <!-- //성인 기초 문해력 자가진단 시스템 확인용 버튼 -->
 
 
-  <section id="self-diagnosis" class="self-diagnosis"><!-- 레이아웃이 타입 B,C(예시와 질문이 좌우)일 경우 클래스 type-b 추가 -->
+  <section id="self-diagnosis" class="self-diagnosis type-b"><!-- 레이아웃이 타입 B,C(예시와 질문이 좌우)일 경우 클래스 type-b 추가 -->
     <div class="inner-area">
       <div class="top-area">
         <h1 class="title">성인 기초 문해력 자가진단 시스템</h1>
@@ -72,17 +72,25 @@
       <div class="section-area">
         <div class="title-area">
           <h2 class="title">
-            다음을 듣고 물음에 답해주세요.
-            <span class="info">듣기버튼을 눌러 <strong>음성안내를 확인</strong>해주세요.</span>
+            다음 지도를 보고 물음에 답해주세요.
           </h2>
-          <button type="button" class="btn-voice">듣기</button>
         </div>
         <div class="contents-area">
           <div class="example-area">
             <div class="example-inner">
-              <img src="../assets/images/self_diagnosis/img_examples_a_ga_1.png" alt="예시 이미지 - 대체 텍스트 내용 참고" longdesc="#img-longdesc">
+              <img src="../assets/images/self_diagnosis/img_examples_b_ga_14.png" alt="예시 이미지 - 대체 텍스트 내용 참고" longdesc="#img-longdesc">
               <div id="img-longdesc" class="blind-box">
-                신입사원 여러분을 우리회사 OO이 되신 것을 환영합니다! 2030년 신입 OO 직무 연수 - 일시: 2030년 3월 5일(월) 오전 11시, 주최: (주)우리회사, 장소: 우리회사 1F A홀
+                <strong>한양도성 순성길</strong>
+                <ul>
+                  <li>박악 구간 - 창의문~혜화문 4.7km(3시간)</li>
+                  <li>낙산 구간 - 흥인지문~혜화문 2.1km(1시간30분)</li>
+                  <li>남산 구간 - 장충체육관~백범광장 4.2km(3시간)</li>
+                  <li>인왕산 구간 - 창의문~돈의문 터 4km(2시간30분)</li>
+                </ul>
+              </div>
+              <div class="box-source">
+                출처 : 중앙일보 (2020.10.29.). 한양 순성길 심심하다고? <br>이 말 한다면 백악·인왕산 안가봤다. 기사의 사진을 참고하여 연구진이 제작 <br>
+                <a href="https://pds.joongang.co.kr/news/component/htmlphoto_mmdata/202010/29/0eead123-0c4d-4ab1-abb7-84106744c306.jpg" target="_blank" title="새창">https://pds.joongang.co.kr/news/component/htmlphoto_mmdata/202010/29/0eead123-0c4d-4ab1-abb7-84106744c306.jpg</a>
               </div>
             </div>
           </div>
@@ -91,26 +99,13 @@
           <div class="question-area">
             <div class="item-area">
               <div class="item-question">
-                위 안내문 중 OO에 해당하는 글자를 선택해 주세요.
+                한양도성 순성길을 걷고자 합니다. 광희문에서 출발하여, 숭례문에 가장 빠르게 도착하려면, 어느 구간을 걸으면 될까요?
               </div>
               <div class="item-answer">
-                <div class="form-group">
-                  <span class="form-box">
-                    <input type="radio" name="self-diagnosis-radio" id="radio01">
-                    <label for="radio01">직원</label>
-                  </span>
-                  <span class="form-box">
-                    <input type="radio" name="self-diagnosis-radio" id="radio02">
-                    <label for="radio02">사원</label>
-                  </span>
-                  <span class="form-box">
-                    <input type="radio" name="self-diagnosis-radio" id="radio03">
-                    <label for="radio03">가족</label>
-                  </span>
-                  <span class="form-box">
-                    <input type="radio" name="self-diagnosis-radio" id="radio04">
-                    <label for="radio04">신입</label>
-                  </span>
+                <div class="form-answer">
+                  <span class="answer">답 :</span>
+                  <input type="text" title="답변">
+                  <span class="spacing">구간</span>
                 </div>
               </div>
             </div>

@@ -30,7 +30,7 @@
   align-items: center;
   margin-bottom: 0;
 }
-.self-diagnosis.type-b .form-group {
+.self-diagnosis.type-b .form-group,.self-diagnosis table .form-group,.self-diagnosis .form-group.start {
   justify-content: start;
 }
 .self-diagnosis .form-group.column {
@@ -77,9 +77,9 @@
 }
 .self-diagnosis .form-box label {
   display: inline-block;
-  padding-left: 38px;
+  padding: 3px 0 3px 38px;
   margin-bottom: 0;
-  line-height: 30px;
+  line-height: 24px;
   font-weight: 400;
   cursor: pointer;
 }
@@ -167,6 +167,32 @@
   vertical-align: middle;
   border: 1px solid #B0B0B0;
 }
+.form-table .title-box {
+  padding: 9px 8px;
+  margin-bottom: 8px;
+  text-align: center;
+  background-color: #5986c6;
+}
+.form-table .title-box .title {
+  color: #fff;
+}
+.form-table table {
+  width: 100%;
+}
+.form-table th,.form-table td {
+  padding: 5px 4px;
+  font-size: 16px;
+  line-height: 120%;
+  vertical-align: middle;
+  border: 1px solid #5986C6;
+}
+.form-table th {
+  text-align: center;
+  background-color: #e1eaf4;
+}
+.form-table td {
+  background-color: #fff;
+}
 /* box */
 .box-style {
   padding: 16px;
@@ -198,7 +224,45 @@
   font-weight: 600;
   color: #303030;
 }
-/*  */
+/* list */
+.form-list {
+  position: relative;
+}
+.form-list::before {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  display: inline-block;
+  height: 90%;
+  content: '';
+  border-left: 4px dotted #007CFF;
+  transform: translateY(-50%);
+}
+.form-list ul {
+  position: relative;
+}
+.form-list li {
+  display: flex;
+  align-items: center;
+  height: 40px;
+  margin: 12px 0;
+}
+.form-list li:first-child {
+  margin-top: 0;
+}
+.form-list li:last-child {
+  margin-bottom: 0;
+}
+.form-list li::before {
+  flex-shrink: 0;
+  flex-basis: 28px;
+  height: 28px;
+  margin-right: 8px;
+  content: '';
+  border: 4px solid #007CFF;
+  border-radius: 100%;
+  background-color: #fff;
+}
 .blind-box {
   position: absolute;
   width: 1px;
@@ -228,6 +292,9 @@
   .box-source {
     margin-top: 16px;
   }
+  .form-table th,.form-table td {
+    font-size: 14px;
+  }
 }
 @media only screen and (max-width:640px){
   .self-diagnosis input[type="text"],.self-diagnosis select {
@@ -235,7 +302,7 @@
     font-size: 13px;
   }
   .self-diagnosis .form-box label {
-    padding-left: 24px;
+    padding: 0 0 0 24px;
     line-height: 20px;
   }
   .self-diagnosis .form-box label::before {
@@ -265,6 +332,23 @@
   }
   .box-source {
     margin-top: 8px;
+  }
+  .form-table th,.form-table td {
+    font-size: 13px;
+  }
+  .form-list::before {
+    left: 7px;
+    border-left: 2px dotted #007CFF;
+  }
+  .form-list li {
+    height: 30px;
+    margin: 2px 0;
+  }
+  .form-list li::before {
+    flex-basis: 15px;
+    height: 15px;
+    margin-right: 5px;
+    border: 2px solid #007CFF;
   }
 }
 
@@ -386,6 +470,7 @@
 #self-diagnosis .section-area .title-area {
   display: flex;
   justify-content: center;
+  flex-flow: row-reverse;
   align-items: center;
   flex-shrink: 0;
   margin-bottom: 24px;
@@ -408,12 +493,14 @@
   color: #101010;
   font-weight: 600;
 }
-#self-diagnosis .section-area .title-area.type-voice::before {
+#self-diagnosis .section-area .title-area .btn-voice {
   display: inline-block;
   width: 60px;
   height: 60px;
   margin-right: 10px;
-  content: '';
+  font-size: 1px;
+  line-height: 1px;
+  color: transparent;
   background: url(../images/self_diagnosis/Icon_speaker.png) center center no-repeat;
   background-size: 100% auto;
 }
@@ -560,7 +647,7 @@
   text-align: left;
   border-radius: 8px;
   background-color: #F4F4F4;
-  overflow: hidden;
+  overflow-y: auto;
 }
 #self-diagnosis.type-b .section-area .example-area {
   flex-basis: 500px;
@@ -568,7 +655,7 @@
   max-height: 100%;
   padding: 16px;
   margin-bottom: 0;
-  background-color: #fff;
+  background: url(../images/self_diagnosis/bg_examples.png) center center no-repeat #fff;
   overflow-y: auto;
   box-sizing: border-box;
 }
@@ -576,6 +663,7 @@
   margin: 0;
 }
 #self-diagnosis.type-b .section-area .question-area {
+  flex-grow: 1;
   height: 100%;
   margin-left: 16px;
 }
@@ -597,7 +685,7 @@
   display: inline-block;
 }
 #self-diagnosis.type-b .section-area .question-area .item-area .item-answer .answer {
-  margin-right: 16px;
+  margin-right: 8px;
   font-weight: 600;
   color: #007CFF;
 }
@@ -695,8 +783,7 @@
   #self-diagnosis .section-area .title-area .title .info {
     font-size: 14px;
   }
-  #self-diagnosis .section-area .title-area.type-voice::before {
-    display: inline-block;
+  #self-diagnosis .section-area .title-area .btn-voice {
     width: 40px;
     height: 40px;
   }

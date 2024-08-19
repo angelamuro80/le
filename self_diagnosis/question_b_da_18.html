@@ -54,7 +54,7 @@
   <!-- //성인 기초 문해력 자가진단 시스템 확인용 버튼 -->
 
 
-  <section id="self-diagnosis" class="self-diagnosis"><!-- 레이아웃이 타입 B,C(예시와 질문이 좌우)일 경우 클래스 type-b 추가 -->
+  <section id="self-diagnosis" class="self-diagnosis type-b"><!-- 레이아웃이 타입 B,C(예시와 질문이 좌우)일 경우 클래스 type-b 추가 -->
     <div class="inner-area">
       <div class="top-area">
         <h1 class="title">성인 기초 문해력 자가진단 시스템</h1>
@@ -72,17 +72,47 @@
       <div class="section-area">
         <div class="title-area">
           <h2 class="title">
-            다음을 듣고 물음에 답해주세요.
-            <span class="info">듣기버튼을 눌러 <strong>음성안내를 확인</strong>해주세요.</span>
+            상급 병원 신청서를 보고 물음에 답해주세요.
           </h2>
-          <button type="button" class="btn-voice">듣기</button>
         </div>
         <div class="contents-area">
           <div class="example-area">
             <div class="example-inner">
-              <img src="../assets/images/self_diagnosis/img_examples_a_ga_1.png" alt="예시 이미지 - 대체 텍스트 내용 참고" longdesc="#img-longdesc">
+              <img src="../assets/images/self_diagnosis/img_examples_b_da_18.png" alt="예시 이미지 - 대체 텍스트 내용 참고" longdesc="#img-longdesc">
               <div id="img-longdesc" class="blind-box">
-                신입사원 여러분을 우리회사 OO이 되신 것을 환영합니다! 2030년 신입 OO 직무 연수 - 일시: 2030년 3월 5일(월) 오전 11시, 주최: (주)우리회사, 장소: 우리회사 1F A홀
+                <strong>신청인</strong>
+                <ul>
+                  <li>이름 : 도현아</li>
+                  <li>등록번호 : 20240718-1</li>
+                  <li>입원일 : 2024년 2월 18일</li>
+                  <li>현 입원 병실 : 803호</li>
+                  <li>신청 병실 : 709호(4인실)</li>
+                </ul>
+                <strong>상급 병실 사용 신청서</strong>
+                <table>
+                  <caption>상급 병실 사용 신청서의 등록 번호, 입원일, 환자 성명, 현 입원 병실, 신청 병실 정보를 제공합니다.</caption>
+                  <tbody>
+                    <tr>
+                      <th scope="row">등록 번호</th>
+                      <td></td>
+                      <th scope="row">입원일</th>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <th scope="row">환자 성명</th>
+                      <td></td>
+                      <th scope="row">현 입원 병실</th>
+                      <td>호</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">신청 병실</th>
+                      <td colspan="3">호( 인실)</td>
+                    </tr>
+                    <tr>
+                      <td colspan="4">위와 같이 상급 병실을 사용하고자 신청하며, 상급 병실 차액은 환자가 전액 부담하겠습니다.</td>
+                    </tr>
+                  </tbody>
+                </table>
               </div>
             </div>
           </div>
@@ -91,26 +121,68 @@
           <div class="question-area">
             <div class="item-area">
               <div class="item-question">
-                위 안내문 중 OO에 해당하는 글자를 선택해 주세요.
+                입원 병실을 옮기려고 신청서를 작성하려고 합니다. 아래 내용을 신청서에 맞게 작성해 주세요.
               </div>
               <div class="item-answer">
-                <div class="form-group">
-                  <span class="form-box">
-                    <input type="radio" name="self-diagnosis-radio" id="radio01">
-                    <label for="radio01">직원</label>
-                  </span>
-                  <span class="form-box">
-                    <input type="radio" name="self-diagnosis-radio" id="radio02">
-                    <label for="radio02">사원</label>
-                  </span>
-                  <span class="form-box">
-                    <input type="radio" name="self-diagnosis-radio" id="radio03">
-                    <label for="radio03">가족</label>
-                  </span>
-                  <span class="form-box">
-                    <input type="radio" name="self-diagnosis-radio" id="radio04">
-                    <label for="radio04">신입</label>
-                  </span>
+                <div class="form-table">
+                  <div class="title-box">
+                    <strong class="title">상급 병실 사용 신청서</strong>
+                  </div>
+                  <table>
+                    <caption>상급 병실 사용 신청서의 등록 번호, 입원일, 환자 성명, 현 입원 병실, 신청 병실 정보를 제공합니다.</caption>
+                    <colgroup>
+                      <col style="width: 23%;">
+                      <col style="width: 27%;">
+                      <col style="width: 23%;">
+                      <col style="width: 27%;">
+                    </colgroup>
+                    <tbody>
+                      <tr>
+                        <th scope="row">등록 번호</th>
+                        <td>
+                          <div class="form-answer">
+                            <input type="text" title="등록 번호 앞 7자리">
+                            <span class="spacing">-</span>
+                            <input type="text" title="등록 번호 마지막 1자리">
+                          </div>
+                        </div>
+                        </td>
+                        <th scope="row">입원일</th>
+                        <td>
+                          <input type="text" title="입원일">
+                        </td>
+                      </tr>
+                      <tr>
+                        <th scope="row">환자 성명</th>
+                        <td>
+                          <input type="text" title="환자 성명">
+                        </td>
+                        <th scope="row">현 입원 병실</th>
+                        <td>
+                          <div class="form-answer">
+                            <input type="text" title="현 입원 병실">
+                            <span class="spacing">호</span>
+                          </div>
+                        </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <th scope="row">신청 병실</th>
+                        <td colspan="3">
+                          <div class="form-answer">
+                            <input type="text" title="신청 병실">
+                            <span class="spacing">호</span>
+                            <input type="text" title="인실">
+                            <span class="spacing">인실</span>
+                          </div>
+                        </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td colspan="4">위와 같이 상급 병실을 사용하고자 신청하며, 상급 병실 차액은 환자가 전액 부담하겠습니다.</td>
+                      </tr>
+                    </tbody>
+                  </table>
                 </div>
               </div>
             </div>

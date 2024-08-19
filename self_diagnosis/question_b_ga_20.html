@@ -54,7 +54,7 @@
   <!-- //성인 기초 문해력 자가진단 시스템 확인용 버튼 -->
 
 
-  <section id="self-diagnosis" class="self-diagnosis"><!-- 레이아웃이 타입 B,C(예시와 질문이 좌우)일 경우 클래스 type-b 추가 -->
+  <section id="self-diagnosis" class="self-diagnosis type-b"><!-- 레이아웃이 타입 B,C(예시와 질문이 좌우)일 경우 클래스 type-b 추가 -->
     <div class="inner-area">
       <div class="top-area">
         <h1 class="title">성인 기초 문해력 자가진단 시스템</h1>
@@ -72,17 +72,66 @@
       <div class="section-area">
         <div class="title-area">
           <h2 class="title">
-            다음을 듣고 물음에 답해주세요.
-            <span class="info">듣기버튼을 눌러 <strong>음성안내를 확인</strong>해주세요.</span>
+            다음 시간표를 보고 물음에 답해주세요.
           </h2>
-          <button type="button" class="btn-voice">듣기</button>
         </div>
         <div class="contents-area">
           <div class="example-area">
             <div class="example-inner">
-              <img src="../assets/images/self_diagnosis/img_examples_a_ga_1.png" alt="예시 이미지 - 대체 텍스트 내용 참고" longdesc="#img-longdesc">
+              <img src="../assets/images/self_diagnosis/img_examples_b_ga_20.png" alt="예시 이미지 - 대체 텍스트 내용 참고" longdesc="#img-longdesc">
               <div id="img-longdesc" class="blind-box">
-                신입사원 여러분을 우리회사 OO이 되신 것을 환영합니다! 2030년 신입 OO 직무 연수 - 일시: 2030년 3월 5일(월) 오전 11시, 주최: (주)우리회사, 장소: 우리회사 1F A홀
+                <table>
+                  <caption>[제주 버스 시간표]의 경유지, 버스호차(1~4호차) 정보를 제공합니다.</caption>
+                  <thead>
+                    <tr>
+                      <th scope="col" rowspan="2">경유지</th>
+                      <th scope="col" colspan="4">버스호차</th>
+                    </tr>
+                    <tr>
+                      <th scope="col">1호차</th>
+                      <th scope="col">2호차</th>
+                      <th scope="col">3호차</th>
+                      <th scope="col">4호차</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th scope="row">제주국제공항</th>
+                      <td>9:00</td>
+                      <td>10:30</td>
+                      <td>11:00</td>
+                      <td>12:00</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">용담 레포츠공원</th>
+                      <td>9:10</td>
+                      <td>10:40</td>
+                      <td>11:10</td>
+                      <td>12:10</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">어영공원</th>
+                      <td>9:13</td>
+                      <td>10:43</td>
+                      <td>11:13</td>
+                      <td>11:13</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">도두봉</th>
+                      <td>9:19</td>
+                      <td>10:49</td>
+                      <td>11:19</td>
+                      <td>12:19</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">이호목마등대</th>
+                      <td>9:25</td>
+                      <td>10:55</td>
+                      <td>11:25</td>
+                      <td>12:25</td>
+                    </tr>
+                  </tbody>
+                </table>
               </div>
             </div>
           </div>
@@ -91,26 +140,17 @@
           <div class="question-area">
             <div class="item-area">
               <div class="item-question">
-                위 안내문 중 OO에 해당하는 글자를 선택해 주세요.
+                10시 30분에 제주국제공항에 도착하는 친구를 만나 한 시간 정도 공항 카페에서 커피를 마시고, 버스를 타고 도두봉에 가기로 했습니다. 도두봉에 몇 시 몇 분에 도착하게 될까요?
               </div>
               <div class="item-answer">
-                <div class="form-group">
-                  <span class="form-box">
-                    <input type="radio" name="self-diagnosis-radio" id="radio01">
-                    <label for="radio01">직원</label>
-                  </span>
-                  <span class="form-box">
-                    <input type="radio" name="self-diagnosis-radio" id="radio02">
-                    <label for="radio02">사원</label>
-                  </span>
-                  <span class="form-box">
-                    <input type="radio" name="self-diagnosis-radio" id="radio03">
-                    <label for="radio03">가족</label>
-                  </span>
-                  <span class="form-box">
-                    <input type="radio" name="self-diagnosis-radio" id="radio04">
-                    <label for="radio04">신입</label>
-                  </span>
+                <div class="form-table">
+                  <div class="form-answer">
+                    <span class="answer">답 :</span>
+                    <input type="text" class="text-right" title="시간">
+                    <span class="spacing">시</span>
+                    <input type="text" class="text-right" title="분">
+                    <span class="spacing">분</span>
+                  </div>
                 </div>
               </div>
             </div>

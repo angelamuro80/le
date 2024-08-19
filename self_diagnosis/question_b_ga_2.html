@@ -54,7 +54,7 @@
   <!-- //성인 기초 문해력 자가진단 시스템 확인용 버튼 -->
 
 
-  <section id="self-diagnosis" class="self-diagnosis"><!-- 레이아웃이 타입 B,C(예시와 질문이 좌우)일 경우 클래스 type-b 추가 -->
+  <section id="self-diagnosis" class="self-diagnosis type-b"><!-- 레이아웃이 타입 B,C(예시와 질문이 좌우)일 경우 클래스 type-b 추가 -->
     <div class="inner-area">
       <div class="top-area">
         <h1 class="title">성인 기초 문해력 자가진단 시스템</h1>
@@ -72,17 +72,50 @@
       <div class="section-area">
         <div class="title-area">
           <h2 class="title">
-            다음을 듣고 물음에 답해주세요.
-            <span class="info">듣기버튼을 눌러 <strong>음성안내를 확인</strong>해주세요.</span>
+            다음 설명을 보고 물음에 답해주세요.
           </h2>
-          <button type="button" class="btn-voice">듣기</button>
         </div>
         <div class="contents-area">
           <div class="example-area">
             <div class="example-inner">
-              <img src="../assets/images/self_diagnosis/img_examples_a_ga_1.png" alt="예시 이미지 - 대체 텍스트 내용 참고" longdesc="#img-longdesc">
+              <img src="../assets/images/self_diagnosis/img_examples_b_ga_2.png" alt="예시 이미지 - 대체 텍스트 내용 참고" longdesc="#img-longdesc">
               <div id="img-longdesc" class="blind-box">
-                신입사원 여러분을 우리회사 OO이 되신 것을 환영합니다! 2030년 신입 OO 직무 연수 - 일시: 2030년 3월 5일(월) 오전 11시, 주최: (주)우리회사, 장소: 우리회사 1F A홀
+                <strong>[외투 세탁시 주의 사항]</strong>
+                <ul>
+                  <li>깃털이 포함된 제품은 가정에서 세탁하기 어렵기 때문에 세탁소에 맡기는 것을 추천합니다.</li>
+                  <li>세탁한 다음에는 깃털이 뭉치지 않도록 약하게 두들겨서 말리십시오.</li>
+                  <li>프린트된 부분은 강하게 비벼 세탁하거나 마찰이 되는 것은 피하여 주십시오.</li>
+                  <li>세탁이나 수납 시에는 지퍼, 버튼 등의 양 끝을 잘 맞추어 닫아 주십시오.</li>
+                </ul>
+                <strong>[세제 권장 사용량]</strong>
+                <table>
+                  <caption>권장 사용량의 세탁량, 10kg, 7kg, 5kg, 3kg 정보입니다.</caption>
+                  <thead>
+                    <tr>
+                      <th scope="col">세탁량</th>
+                      <th scope="col">10kg</th>
+                      <th scope="col">7kg</th>
+                      <th scope="col">5kg</th>
+                      <th scope="col">3kg</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th scope="row">일반세탁기</th>
+                      <td>75ml</td>
+                      <td>65ml</td>
+                      <td>55ml</td>
+                      <td>45ml</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">드럼세탁기</th>
+                      <td>65ml</td>
+                      <td>50ml</td>
+                      <td>35ml</td>
+                      <td>20ml</td>
+                    </tr>
+                  </tbody>
+                </table>
               </div>
             </div>
           </div>
@@ -91,25 +124,25 @@
           <div class="question-area">
             <div class="item-area">
               <div class="item-question">
-                위 안내문 중 OO에 해당하는 글자를 선택해 주세요.
+                설명을 보고 외투 세탁에 대한 옳은 설명을 고르세요.
               </div>
               <div class="item-answer">
-                <div class="form-group">
+                <div class="form-group column">
                   <span class="form-box">
                     <input type="radio" name="self-diagnosis-radio" id="radio01">
-                    <label for="radio01">직원</label>
+                    <label for="radio01">깃털이 포함된 제품은 가정에서 세탁하는 것을 추천한다.</label>
                   </span>
                   <span class="form-box">
                     <input type="radio" name="self-diagnosis-radio" id="radio02">
-                    <label for="radio02">사원</label>
+                    <label for="radio02">세탁 후에는 깃털이 뭉치지 않도록, 약하게 두들겨 말린다.</label>
                   </span>
                   <span class="form-box">
                     <input type="radio" name="self-diagnosis-radio" id="radio03">
-                    <label for="radio03">가족</label>
+                    <label for="radio03">프린트된 부분은 강하게 비벼 세탁한다.</label>
                   </span>
                   <span class="form-box">
                     <input type="radio" name="self-diagnosis-radio" id="radio04">
-                    <label for="radio04">신입</label>
+                    <label for="radio04">수납 시에는 지퍼를 열어둔 채 보관한다.</label>
                   </span>
                 </div>
               </div>

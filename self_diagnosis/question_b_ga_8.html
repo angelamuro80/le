@@ -54,7 +54,7 @@
   <!-- //성인 기초 문해력 자가진단 시스템 확인용 버튼 -->
 
 
-  <section id="self-diagnosis" class="self-diagnosis"><!-- 레이아웃이 타입 B,C(예시와 질문이 좌우)일 경우 클래스 type-b 추가 -->
+  <section id="self-diagnosis" class="self-diagnosis type-b"><!-- 레이아웃이 타입 B,C(예시와 질문이 좌우)일 경우 클래스 type-b 추가 -->
     <div class="inner-area">
       <div class="top-area">
         <h1 class="title">성인 기초 문해력 자가진단 시스템</h1>
@@ -72,17 +72,17 @@
       <div class="section-area">
         <div class="title-area">
           <h2 class="title">
-            다음을 듣고 물음에 답해주세요.
-            <span class="info">듣기버튼을 눌러 <strong>음성안내를 확인</strong>해주세요.</span>
+            다음 편지를 보고 물음에 답해주세요.
           </h2>
-          <button type="button" class="btn-voice">듣기</button>
         </div>
         <div class="contents-area">
           <div class="example-area">
             <div class="example-inner">
-              <img src="../assets/images/self_diagnosis/img_examples_a_ga_1.png" alt="예시 이미지 - 대체 텍스트 내용 참고" longdesc="#img-longdesc">
+              <img src="../assets/images/self_diagnosis/img_examples_b_ga_8.png" alt="예시 이미지 - 대체 텍스트 내용 참고" longdesc="#img-longdesc">
               <div id="img-longdesc" class="blind-box">
-                신입사원 여러분을 우리회사 OO이 되신 것을 환영합니다! 2030년 신입 OO 직무 연수 - 일시: 2030년 3월 5일(월) 오전 11시, 주최: (주)우리회사, 장소: 우리회사 1F A홀
+                지우와 시우 보아라. 오랜만에 편지를 보낸다. 너희들이 어느새 자라서 한 달 뒤에는 초등학교에 입학을 하는구나! 꼬물꼬물 기어 다니던 때가 엊그제 같은데 벌써 초등학생이 되다니... <br>
+                (중략) <br>
+                긴 세월 살아오면서 이 할아버지는 후회되는 것이 한 가지가 있다. 너희 할머니는 물론 쌍둥이 둘 키우느라 고생한 너희 엄마 아빠에게도 사랑한다는 따뜻한 말 한마디 건네지 못하고 살았다. 왜 그리 표현에 인색했는지... <br>사랑하는 나의 보물 지우 시우야, 건강하게 잘 자라줘서 고맙고, 다시 한번 입학을 축하 한다. <br>2023년 2월 3일 할아버지가
               </div>
             </div>
           </div>
@@ -91,25 +91,25 @@
           <div class="question-area">
             <div class="item-area">
               <div class="item-question">
-                위 안내문 중 OO에 해당하는 글자를 선택해 주세요.
+                편지글에 관한 내용 중 틀린 것은 무엇일까요?
               </div>
               <div class="item-answer">
-                <div class="form-group">
+                <div class="form-group column">
                   <span class="form-box">
                     <input type="radio" name="self-diagnosis-radio" id="radio01">
-                    <label for="radio01">직원</label>
+                    <label for="radio01">손주들이 한 달 뒤에 초등학교 졸업을 한다.</label>
                   </span>
                   <span class="form-box">
                     <input type="radio" name="self-diagnosis-radio" id="radio02">
-                    <label for="radio02">사원</label>
+                    <label for="radio02">손주들이 쌍둥이이다.</label>
                   </span>
                   <span class="form-box">
                     <input type="radio" name="self-diagnosis-radio" id="radio03">
-                    <label for="radio03">가족</label>
+                    <label for="radio03">할아버지가 손주들에게 쓰는 편지이다.</label>
                   </span>
                   <span class="form-box">
                     <input type="radio" name="self-diagnosis-radio" id="radio04">
-                    <label for="radio04">신입</label>
+                    <label for="radio04">할아버지가 가족들에게 표현을 잘하지 못한 것을 후회한다.</label>
                   </span>
                 </div>
               </div>
