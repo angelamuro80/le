@@ -11,6 +11,7 @@
 /* 추가 css */
 @import url('font.css');
 
+div.cont{height:auto;min-height:30px;background:none;}
 /* input */
 .self-diagnosis input[type="text"],.self-diagnosis select {
   width: 100%;
@@ -149,6 +150,10 @@
 .table-style {
   width: 100%;
   background-color: #fff;
+  border-top: 1px solid #B0B0B0;
+}
+.table-style.bsis {
+  border-top: 2px solid #595959;
 }
 .table-style thead {
   background-color: #E0E0E0;
@@ -165,7 +170,16 @@
   font-weight: 400;
   text-align: center;
   vertical-align: middle;
-  border: 1px solid #B0B0B0;
+  border-bottom: 1px solid #B0B0B0;
+  border-left: 1px solid #B0B0B0;
+}
+.table-style .bsisth {
+  background-color: #E0E0E0;
+  font-weight:600;
+  text-align:left !important;
+}
+.table-style th:first-child,.table-style td:first-child {
+  border-left:none;
 }
 .form-table .title-box {
   padding: 9px 8px;
@@ -361,11 +375,11 @@
   position: fixed;
   left: 0;
   top: 0;
-  z-index: 5002;
+  z-index: 15;
   width: 100vw;
   height:  100vh;
   font-family: 'Pretendard-Regular';
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 400;
   color: #303030;
 }
@@ -432,8 +446,17 @@
   background-color: #4c78a6;
   overflow: hidden;
 }
-#self-diagnosis .top-area .step-area .item-list .item.on, #self-diagnosis .top-area .step-area .item-list .item.active {
+#self-diagnosis .top-area .step-area .item-list .item.on {
   background-color: #fff;
+}
+@keyframes blink-effect {
+  50% {
+    opacity: 0;
+  }
+}
+#self-diagnosis .top-area .step-area .item-list .item.active {
+  background-color: #ffea2e;
+  animation: blink-effect 1s step-end infinite;
 }
 #self-diagnosis .top-area .step-area .item-list .item::before {
   width: 1px;
@@ -831,6 +854,9 @@
   }
   .self-diagnosis .form-group.column .form-box + .form-box {
     margin-top: 5px;
+  }
+  .self-diagnosis .form-group .clearMB {
+    display: none;
   }
 }
 @media only screen and (max-width:400px){
