@@ -24,6 +24,9 @@ div.cont{height:auto;min-height:30px;background:none;}
   background-color: #fff;
   box-sizing: border-box;
 }
+.self-diagnosis input[type="text"]:read-only,.self-diagnosis input[type="text"]:disabled,.self-diagnosis select:disabled {
+  background-color: #DADADA;
+}
 .self-diagnosis .form-group {
   display: flex;
   flex-wrap: wrap;
@@ -38,7 +41,7 @@ div.cont{height:auto;min-height:30px;background:none;}
   flex-direction: column;
   align-items: start;
 }
-.self-diagnosis .form-group.in2,.self-diagnosis .form-group.in3 {
+.self-diagnosis .form-group.in2,.self-diagnosis .form-group.in3,.self-diagnosis .form-group.in4 {
   justify-content: space-between;
 }
 .self-diagnosis .form-group.in2 input[type="text"],.self-diagnosis .form-group.in2 select {
@@ -47,10 +50,14 @@ div.cont{height:auto;min-height:30px;background:none;}
 .self-diagnosis .form-group.in3 input[type="text"],.self-diagnosis .form-group.in3 select {
   width: calc((100% / 3) - (16px / 3));
 }
+.self-diagnosis .form-group.in4 input[type="text"],.self-diagnosis .form-group.in4 select {
+  width: calc((100% / 4) - (16px / 4));
+}
 .self-diagnosis .form-group span {
   margin: 2px 0;
 }
 .self-diagnosis .form-group .form-box {
+  min-height: 30px;
   margin-right: 16px;
 }
 .self-diagnosis .form-group .form-box:last-child {
@@ -61,6 +68,10 @@ div.cont{height:auto;min-height:30px;background:none;}
 }
 .self-diagnosis .form-group.column .form-box + .form-box {
   margin: 12px 0 0 0;
+}
+.self-diagnosis .form-parents {
+  display: flex;
+  align-items: center;
 }
 .self-diagnosis .form-box {
   position: relative;
@@ -129,6 +140,25 @@ div.cont{height:auto;min-height:30px;background:none;}
   border-radius: 0;
   transform:rotate(315deg);
 }
+.self-diagnosis .form-box input[type="radio"]:disabled ~ label::before{
+  border-color: #B0B0B0 !important;
+  background-color: #DADADA !important;
+}
+.self-diagnosis .form-box input[type="radio"]:disabled ~ label::after{
+  background-color: #909090 !important;
+}
+.self-diagnosis .form-box input[type="checkbox"]:disabled ~ label::before,.self-diagnosis .form-box.check input[type="radio"]:disabled ~ label::before {
+  border: 1px solid #B0B0B0 !important;
+  background-color: #DADADA !important;
+}
+.self-diagnosis .form-box input[type="checkbox"]:disabled ~ label::after,.self-diagnosis .form-box.check input[type="radio"]:disabled ~ label::after {
+  border-left:2px solid #DADADA;
+  border-bottom:2px solid #DADADA;
+}
+.self-diagnosis .form-box input[type="checkbox"]:disabled:checked ~ label::after,.self-diagnosis .form-box.check input[type="radio"]:disabled:checked ~ label::after {
+  border-left:2px solid #909090;
+  border-bottom:2px solid #909090;
+}
 .self-diagnosis .form-answer {
   display: flex;
   justify-content: space-between;
@@ -180,6 +210,7 @@ div.cont{height:auto;min-height:30px;background:none;}
 }
 .table-style th:first-child,.table-style td:first-child {
   border-left:none;
+  border-right: 1px solid #B0B0B0;
 }
 .form-table .title-box {
   padding: 9px 8px;
@@ -206,6 +237,9 @@ div.cont{height:auto;min-height:30px;background:none;}
 }
 .form-table td {
   background-color: #fff;
+}
+.form-table .form-answe {
+  padding: 0;
 }
 /* box */
 .box-style {
@@ -314,6 +348,9 @@ div.cont{height:auto;min-height:30px;background:none;}
   .self-diagnosis input[type="text"],.self-diagnosis select {
     height: 30px;
     font-size: 13px;
+  }
+  .self-diagnosis .form-group .form-box {
+    min-height: 20px;
   }
   .self-diagnosis .form-box label {
     padding: 0 0 0 24px;
@@ -678,11 +715,12 @@ div.cont{height:auto;min-height:30px;background:none;}
   max-height: 100%;
   padding: 16px;
   margin-bottom: 0;
-  background: url(../images/self_diagnosis/bg_examples.png) center center no-repeat #fff;
+  background: #fff;
+  /* background: url(../images/self_diagnosis/bg_examples.png) center center no-repeat #fff; */
   overflow-y: auto;
   box-sizing: border-box;
 }
-#self-diagnosis.type-b .section-area .example-area img {
+#self-diagnosis.type-b .section-area .example-area img,#self-diagnosis .section-area .example-area.type2 img {
   margin: 0;
 }
 #self-diagnosis.type-b .section-area .question-area {
@@ -864,9 +902,6 @@ div.cont{height:auto;min-height:30px;background:none;}
     font-size: 16px;
   }
 }
-
-
-
 
 /* 인트로 */
 .intro-box .intro-inner-area {
@@ -1065,5 +1100,135 @@ div.cont{height:auto;min-height:30px;background:none;}
   .agree-box .agree-inner .title {
     margin-bottom: 8px;
     font-size: 14px;
+  }
+}
+
+/* 수강신청 */
+.self-diagnosis .course-registration-box {
+  padding: 30px 40px 0;
+  background-color: #4d91d7;
+}
+.self-diagnosis .course-registration-box .inner-box {
+  padding: 40px 55px 10px;
+  border-radius: 70px 70px 0 0;
+  background-color: #fff;
+  overflow: hidden;
+}
+.self-diagnosis .course-registration-box .img-box img {
+  max-width: 50%;
+}
+.self-diagnosis .course-registration-box .img-box::after {
+  display: block;
+  width: 100%;
+  height: 13px;
+  margin: 16px 0 18px;
+  content: '';
+  background: url(../images/self_diagnosis/bg_line.png) left top repeat;
+}
+@media only screen and (max-width:1000px){
+  .self-diagnosis .course-registration-box {
+    padding: 20px 30px 0;
+  }
+  .self-diagnosis .course-registration-box .inner-box {
+    padding: 20px 30px 10px;
+  }
+}
+@media only screen and (max-width:640px){
+  .self-diagnosis .course-registration-box {
+    padding: 10px 15px 0;
+  }
+  .self-diagnosis .course-registration-box .inner-box {
+    padding: 10px 15px 10px;
+    border-radius: 50px 50px 0 0;
+  }
+  .self-diagnosis .course-registration-box .img-box::after {
+    margin: 8px 0;
+  }
+}
+
+/* box-beaker */
+.self-diagnosis .box-beaker {
+  padding-left: 40px;
+}
+.self-diagnosis .box-beaker .inner-box {
+  height: 270px;
+  padding: 34px 0 0 205px;
+  background: url(../images/self_diagnosis/bg_beaker01.png) left top no-repeat;
+}
+.self-diagnosis .box-beaker.type2 .inner-box {
+  background-image: url(../images/self_diagnosis/bg_beaker02.png);
+}
+.self-diagnosis .box-beaker.type3 .inner-box {
+  background-image: url(../images/self_diagnosis/bg_beaker03.png);
+}
+.self-diagnosis .box-beaker .form-box {
+  overflow: visible;
+}
+.self-diagnosis .box-beaker .form-box label span {
+  position: relative;
+  color: transparent;
+  z-index: 11;
+}
+.self-diagnosis .box-beaker .form-box label > span {
+  position: absolute;
+  right: 80px;
+  top: 0;
+}
+.self-diagnosis .box-beaker .form-box label > span::before {
+  position: absolute;
+  right: -22px;
+  top: 50%;
+  display: inline-block;
+  width: 130px;
+  height: 2px;
+  content: '';
+  background-color: #FF4967;
+  z-index: 10;
+}
+.self-diagnosis .box-beaker.type1 .form-box:nth-child(2) {
+  margin-top: 22px !important;
+}
+.self-diagnosis .box-beaker.type1 .form-box:nth-child(3) {
+  margin-top: 27px !important;
+}
+.self-diagnosis .box-beaker.type1 .form-box:nth-child(4) {
+  margin-top: 26px !important;
+}
+.self-diagnosis .box-beaker.type2 .form-box:nth-child(2) {
+  margin-top: 22px !important;
+}
+.self-diagnosis .box-beaker.type2 .form-box:nth-child(3) {
+  margin-top: 4px !important;
+}
+.self-diagnosis .box-beaker.type2 .form-box:nth-child(4) {
+  margin-top: 16px !important;
+}
+.self-diagnosis .box-beaker.type3 .form-box:nth-child(2) {
+  margin-top: 22px !important;
+}
+.self-diagnosis .box-beaker.type3 .form-box:nth-child(3) {
+  margin-top: 27px !important;
+}
+.self-diagnosis .box-beaker.type3 .form-box:nth-child(4) {
+  margin-top: 26px !important;
+}
+@media only screen and (max-width:1000px){
+  .self-diagnosis .box-beaker {
+    padding-left: 20px;
+  }
+  .self-diagnosis .box-beaker .inner-box {
+    padding-left: 190px;
+  }
+}
+@media only screen and (max-width:640px){
+  .self-diagnosis .box-beaker .inner-box {
+    padding-top: 36px;
+  }
+  .self-diagnosis .box-beaker .form-group .form-box {
+    min-height: 30px;
+  }
+  .self-diagnosis .box-beaker .form-box label::before {
+    width: 30px;
+    height: 30px;
   }
 }

@@ -54,7 +54,7 @@
   <!-- //성인 기초 문해력 자가진단 시스템 확인용 버튼 -->
 
 
-  <section id="self-diagnosis" class="self-diagnosis type-b"><!-- 레이아웃이 타입 B,C(예시와 질문이 좌우)일 경우 클래스 type-b 추가 -->
+  <section id="self-diagnosis" class="self-diagnosis"><!-- 레이아웃이 타입 B,C(예시와 질문이 좌우)일 경우 클래스 type-b 추가 -->
     <div class="inner-area">
       <div class="top-area">
         <h1 class="title">성인 기초 문해력 자가진단 시스템</h1>
@@ -76,7 +76,7 @@
           </h2>
         </div>
         <div class="contents-area">
-          <div class="example-area">
+          <div class="example-area type2">
             <div class="example-inner">
               <img src="../assets/images/self_diagnosis/img_examples_b_na_18.png" alt="예시 이미지 - 대체 텍스트 내용 참고" longdesc="#img-longdesc">
               <div id="img-longdesc" class="blind-box">
@@ -88,7 +88,7 @@
                   <li>연락처 : 010-222-1234</li>
                   <li>교육비 납부 : 현금</li>
                 </ul>
-                <strong>무진평생교육원 수강신청서</strong>
+                <!-- <strong>무진평생교육원 수강신청서</strong>
                 <table>
                   <caption>무진평생교육원 수강신청서의 이름, 생년월일, 주소, 연락처, 교육비납부, 수강과목, 수강시작일 정보를 제공합니다.</caption>
                   <tbody>
@@ -115,7 +115,7 @@
                       <td>2024년3월1일</td>
                     </tr>
                   </tbody>
-                </table>
+                </table> -->
               </div>
             </div>
           </div>
@@ -127,72 +127,92 @@
                 평생교육원 수강 신청을 하고자 합니다. 다음 내용대로 신청 서식을 채워 주세요.
               </div>
               <div class="item-answer">
-                <div class="form-table">
-                  <div class="title-box">
-                    <strong class="title">수강신청서</strong>
+                <div class="course-registration-box">
+                  <div class="inner-box">
+                    <div class="img-box">
+                      <img src="../assets/images/self_diagnosis/img_b_na_18.png" alt="무진평생교육원 MJ LIFELOG LEARNING CENTER 수강신청서">
+                    </div>
+                    <div class="form-table">
+                      <table>
+                        <caption>무진평생교육원 수강신청서의 이름, 생년월일, 주소, 연락처, 교육비납부, 수강과목, 수강시작일 정보를 제공합니다.</caption>
+                        <colgroup>
+                          <col style="width: 23%;">
+                          <col style="width: 27%;">
+                          <col style="width: 23%;">
+                          <col style="width: 27%;">
+                        </colgroup>
+                        <tbody>
+                          <tr>
+                            <th scope="row">이름</th>
+                            <td>
+                              <input type="text" title="이름">
+                            </td>
+                            <th scope="row">생년월일</th>
+                            <td>
+                              <div class="form-group in3">
+                                <input type="text" title="생년월일 연 4자리">
+                                <input type="text" title="생년월일 월">
+                                <input type="text" title="생년월일 일">
+                              </div>
+                            </td>
+                          </tr>
+                          <tr>
+                            <th scope="row">주소</th>
+                            <td colspan="3">
+                              <div class="form-group in4">
+                                <input type="text" title="주소 시">
+                                <input type="text" title="주소 동">
+                                <input type="text" title="주소 도로명">
+                                <input type="text" title="주소 도로명 상세">
+                              </div>
+                            </td>
+                          </tr>
+                          <tr>
+                            <th scope="row">연락처</th>
+                            <td>
+                              <div class="form-group in3">
+                                <input type="text" title="연락처 첫번째 3자리">
+                                <input type="text" title="연락처 두번째 4자리">
+                                <input type="text" title="연락처 마지막 4자리">
+                              </div>
+                            </td>
+                            <th scope="row">교육비납부</th>
+                            <td>
+                              <input type="text" title="교육비납부">
+                              <!-- <div class="form-group">
+                                <span class="form-box check">
+                                  <input type="radio" name="self-diagnosis-radio" id="radio01">
+                                  <label for="radio01">카드</label>
+                                </span>
+                                <span class="form-box check">
+                                  <input type="radio" name="self-diagnosis-radio" id="radio02">
+                                  <label for="radio02">현금</label>
+                                </span>
+                                <span class="form-box check">
+                                  <input type="radio" name="self-diagnosis-radio" id="radio03">
+                                  <label for="radio03">계좌이체</label>
+                                </span>
+                              </div> -->
+                            </td>
+                          </tr>
+                          <tr>
+                            <th scope="row">수강과목</th>
+                            <td>
+                              <input type="text" readonly value="목공기초" title="수강과목">
+                            </td>
+                            <th scope="row">수강시작일</th>
+                            <td>
+                              <div class="form-group in3">
+                                <input type="text" value="2021" readonly title="수강시작일 연">
+                                <input type="text" value="3" readonly title="수강시작일 월">
+                                <input type="text" value="1" readonly title="수강시작일 일">
+                              </div>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
                   </div>
-                  <table>
-                    <caption>무진평생교육원 수강신청서의 이름, 생년월일, 주소, 연락처, 교육비납부, 수강과목, 수강시작일 정보를 제공합니다.</caption>
-                    <colgroup>
-                      <col style="width: 23%;">
-                      <col style="width: 27%;">
-                      <col style="width: 23%;">
-                      <col style="width: 27%;">
-                    </colgroup>
-                    <tbody>
-                      <tr>
-                        <th scope="row">이름</th>
-                        <td>
-                          <input type="text" title="이름">
-                        </td>
-                        <th scope="row">생년월일</th>
-                        <td>
-                          <input type="text" title="생년월일">
-                        </td>
-                      </tr>
-                      <tr>
-                        <th scope="row">주소</th>
-                        <td colspan="3">
-                          <input type="text" title="주소">
-                        </td>
-                      </tr>
-                      <tr>
-                        <th scope="row">연락처</th>
-                        <td colspan="3">
-                          <div class="form-group in3">
-                            <input type="text" title="연락처 첫번째 3자리">
-                            <input type="text" title="연락처 두번째 4자리">
-                            <input type="text" title="연락처 마지막 4자리">
-                          </div>
-                        </td>
-                      </tr>
-                      <tr>
-                        <th scope="row">교육비납부</th>
-                        <td colspan="3">
-                          <div class="form-group">
-                            <span class="form-box check">
-                              <input type="radio" name="self-diagnosis-radio" id="radio01">
-                              <label for="radio01">카드</label>
-                            </span>
-                            <span class="form-box check">
-                              <input type="radio" name="self-diagnosis-radio" id="radio02">
-                              <label for="radio02">현금</label>
-                            </span>
-                            <span class="form-box check">
-                              <input type="radio" name="self-diagnosis-radio" id="radio03">
-                              <label for="radio03">계좌이체</label>
-                            </span>
-                          </div>
-                        </td>
-                      </tr>
-                      <tr>
-                        <th scope="row">수강과목</th>
-                        <td>목공기초</td>
-                        <th scope="row">수강시작일</th>
-                        <td>2024년3월1일</td>
-                      </tr>
-                    </tbody>
-                  </table>
                 </div>
               </div>
             </div>
