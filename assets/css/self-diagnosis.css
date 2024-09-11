@@ -578,7 +578,7 @@ div.cont{height:auto;min-height:30px;background:none;}
   box-sizing: border-box;
 }
 #self-diagnosis .section-area .example-area .example-inner {
-  transition: all ease-in-out 300ms;
+  transition: all ease-in-out 400ms;
 }
 #self-diagnosis.zoom .section-area .example-area .example-inner {
   transform: scale(1.5);
