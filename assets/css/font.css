@@ -2,23 +2,23 @@
 @font-face{
 	font-family:'Pretendard-Regular';
 	font-weight:400;
-	src:url("../font/Pretendard-Regular.eot");
-	src:url("../font/Pretendard-Regular.eot?#iefix") format('embedded-opentype'),
-	    url("../font/Pretendard-Regular.woff") format('woff');
+	src:url("font/Pretendard-Regular.eot");
+	src:url("font/Pretendard-Regular.eot?#iefix") format('embedded-opentype'),
+	    url("font/Pretendard-Regular.woff") format('woff');
 }
 @font-face{
 	font-family:'Pretendard-Regular';
 	font-weight:600;
-	src:url("../font/Pretendard-SemiBold.eot");
- 	src:url("../font/Pretendard-SemiBold.eot?#iefix") format('embedded-opentype'),
-	    url("../font/Pretendard-SemiBold.woff") format('woff');
+	src:url("font/Pretendard-SemiBold.eot");
+ 	src:url("font/Pretendard-SemiBold.eot?#iefix") format('embedded-opentype'),
+	    url("font/Pretendard-SemiBold.woff") format('woff');
 }
 @font-face{
 	font-family:'Pretendard-Regular';
 	font-weight:700;
-	src:url("../font/Pretendard-Bold.eot");
- 	src:url("../font/Pretendard-Bold.eot?#iefix") format('embedded-opentype'),
-	    url("../font/Pretendard-Bold.woff") format('woff');
+	src:url("font/Pretendard-Bold.eot");
+ 	src:url("font/Pretendard-Bold.eot?#iefix") format('embedded-opentype'),
+	    url("font/Pretendard-Bold.woff") format('woff');
 }
 
 @font-face {

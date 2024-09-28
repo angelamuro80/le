@@ -1,14 +1,5 @@
 @charset "UTF-8";
 
-/* 기존 css 연결 */
-@import url('https://le.or.kr/common/css/bootstrap.css');
-@import url('https://le.or.kr//common/css/font.css');
-@import url('https://le.or.kr//common/css/default.css?ipDate=20240811063027');
-@import url('https://le.or.kr//common/css/common.css?ipDate=20240811063027');
-@import url('https://le.or.kr//common/css/button.css?ipDate=20240811063027');
-@import url('https://le.or.kr//common/css/main.css?ipDate=20240811063027');
-
-/* 추가 css */
 @import url('font.css');
 @import url('reset.css');
 @import url('common_layout.css');
