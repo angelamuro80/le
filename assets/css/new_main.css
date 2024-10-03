@@ -99,7 +99,7 @@
 .main_colgroup2 .tab_box .tab_cont h3::before{position:absolute;left:8px;top:50%;display:inline-block;width:16px;height:16px;content:'';background:url(../images/new_main/bu.png) center center no-repeat;transform:translateY(-50%);}
 .main_colgroup2 .tab_box .tab_cont .tab_list{position:relative;padding:24px 12px 0;border-top:1px solid #B0B0B0;}
 .main_colgroup2 .tab_box .tab_cont .tab_list li{margin-bottom:12px;}
-.main_colgroup2 .tab_box .tab_cont .tab_list li a{display:block;white-space:nowrap;text-overflow:ellipsis;overflow: hidden;}
+.main_colgroup2 .tab_box .tab_cont .tab_list li a{display:block;line-height:28px;white-space:nowrap;text-overflow:ellipsis;overflow: hidden;}
 .main_colgroup2 .tab_box .tab_cont .tab_list .tab_more{position:absolute;right:0;top:-40px;display:inline-block;width:32px;height:32px;font-size:1px;line-height:1px;color:transparent;background:url(../images/new_main/bg_more.png) center center no-repeat;overflow:hidden;}
 .main_colgroup2 .tab_box .item.active .tab_cont{display:block;height:304px;}
 .main_colgroup2 .tab_box .item.active .tit{color:#003E80;font-weight:600;border-color:#fff;background-color:#fff;}
