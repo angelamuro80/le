@@ -1,8 +1,8 @@
 @charset "UTF-8";
 
 .main_visual{position:relative;z-index:10;font-family:'Pretendard-Regular';}
-.main_visual .wrap{padding:32px 0;}
-.main_visual .visual{position:relative;float:left;width:964px;border-radius:25px;overflow:hidden;}
+.main_visual .wrap{display:flex;justify-content:space-between;padding:32px 0;}
+.main_visual .visual{position:relative;width:964px;border-radius:25px;overflow:hidden;}
 .main_visual .visual .slide_box{height:334px;overflow:hidden;}
 .main_visual .visual .slide_box .cont_box{float:left;line-height:0;}
 .main_visual .visual .slide_box .cont_box a{display:block;}
@@ -18,7 +18,7 @@
 .main_visual .visual .control_box .auto{background-image:url(../images/new_main/visual_pause.png);}
 .main_visual .visual .control_box .auto.play{background-image:url(../images/new_main/visual_play.png);}
 .main_visual .visual .control_box .next{background-image:url(../images/new_main/visual_next.png);}
-.main_visual .poster{position:relative;float:right;width:220px;border-radius:25px;overflow:hidden;}
+.main_visual .poster{position:relative;width:220px;border-radius:25px;overflow:hidden;}
 .main_visual .poster .slide_box{height:334px;overflow:hidden;}
 .main_visual .poster .slide_box .cont_box{float:left;position:relative;min-height:100px;line-height:0;}
 .main_visual .poster .slide_box .cont_box .title{display:none;position:absolute;left:0;top:50%;width:100%;padding:2px 2%;font-size:1rem;line-height:22px;font-weight:600;color:#003E80;text-align:center;transform:translateY(-50%);box-sizing:border-box;}
@@ -32,10 +32,10 @@
 @media only screen and (max-width:1200px){
 .main_visual .visual{width:calc(100% - 20%);}
 .main_visual .wrap{padding:32px 2%;}
-.main_visual .visual .slide_box{height:auto;}
+.main_visual .visual .slide_box{height:100%;}
 .main_visual .poster .control_box button{margin:0;}
 .main_visual .poster{width:18.2%;}
-.main_visual .poster .slide_box{height:auto;}
+.main_visual .poster .slide_box{height:100%;}
 }
 @media only screen and (max-width:1000px){
 .main_visual .visual,.main_visual .poster{border-radius:15px;}
@@ -49,8 +49,9 @@
 .main_visual .poster .control_box button{width:26px;height:26px;}
 }
 @media only screen and (max-width:480px){
-.main_visual .visual{float:none;width:100%;}
-.main_visual .poster{float:none;width:100%;margin:20px auto 0;background-color:#e6ecf3;}
+.main_visual .wrap{display:block;}
+.main_visual .visual{width:100%;}
+.main_visual .poster{width:100%;margin:20px auto 0;background-color:#e6ecf3;}
 .main_visual .poster .slide_box .cont_box .title{display:block;}
 .main_visual .poster .slide_box .cont_box img{display:none;}
 }
