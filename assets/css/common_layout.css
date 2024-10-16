@@ -1,6 +1,9 @@
 @charset "UTF-8";
 
-body {position:relative;padding:0;font-size:16px;color:#444;font-weight:400; font-family: Nanum Gothic,나눔 고딕,sans-serif;letter-spacing:-0.01em;background:none;}
+body {position:relative;padding:0;font-size:16px;color:#444;font-weight:400; font-family:'Pretendard-Regular',sans-serif;letter-spacing:-0.01em;background:none;}
+@media only screen and (max-width:640px){
+  body {font-size: 14px;}
+}
 
 /* 본문바로가기  */
 .accessibility{overflow:hidden;position:relative;z-index:1000;width:100%;}
@@ -28,7 +31,7 @@ body.m_on{overflow:hidden;}
 #header .search.active button.search_close{display:inline-block;}
 #header .search input[type="text"]{width:100%;height:46px;padding:0 15px;font-size:1em;color:#101010;border:none;background-color:transparent;}
 #header .search input[type="text"]::placeholder{color:#707070;}
-#header .search input[type="submit"]{position:absolute;right:0;top:0;width:48px;height:100%;color:transparent;border:none;border-radius:0;background:url(../images/new_common/btn_search.png) center center no-repeat;box-sizing:border-box;}
+#header .search input[type="button"]{position:absolute;right:0;top:0;width:48px;height:100%;color:transparent;border:none;border-radius:0;background:url(../images/new_common/btn_search.png) center center no-repeat;box-sizing:border-box;}
 #header .search .mngmt{font-weight:700;color:#ffffff;}
 #header .search .timer{color:#FAED7D;font-weight:bold;}
 #header .search .timeText{color:#d8d3d3;}
@@ -38,7 +41,7 @@ body.m_on{overflow:hidden;}
 #header .scale_box li button{display:inline-block;width:32px;height:32px;padding:0;margin:0;font-size:1px;line-height:1px;color:transparent;border:1px solid #007CFF;border-radius:5px;background-position:center center;background-repeat:no-repeat;}
 #header .scale_box li button.plus{background-image:url(../images/new_common/icon_plus.png);}
 #header .scale_box li button.minus{background-image:url(../images/new_common/icon_minus.png);}
-#header .scale_box li button.undo{width:auto;margin:0 8px;font-size:1rem;color:#303030;border:none;}
+#header .scale_box li button.undo{width:auto;margin:0 8px;font-size:1em;color:#303030;border: none;}
 #header .scale_box li button span{position:absolute;width:1px;height:1px;font-size:1px;line-height:1px;color:transparent;}
 @media only screen and (max-width:1199px){
 #header .logo{left:2%;}
@@ -80,11 +83,11 @@ body.m_on{overflow:hidden;}
 #lnb .depth3{}
 #lnb .depth3 li a{position:relative;display:block;padding:12px;font-size:0.88em;line-height:14px;color:#fff;background:none;}
 #lnb .depth3 li a:hover{text-decoration:underline;}
-#lnb .depth3 li a::before{position:absolute;left:6%;top:50%;display:inline-block;width:2px;height:2px;content:'';border-radius:100%;background-color:#fff;transform:translateY(-50%);}
+#lnb .depth3 li a::before{position:absolute;left:10%;top:50%;display:inline-block;width:2px;height:2px;content:'';border-radius:100%;background-color:#fff;transform:translateY(-50%);}
 
 #lnb_box.lnb_on{}
 #lnb_box.lnb_on #lnb .depth2{opacity:1;visibility:visible;transition:none !important;}
-#lnb_box.lnb_on #lnb .depth3 li a{padding:8px 0 8px 10%;}
+#lnb_box.lnb_on #lnb .depth3 li a{padding:8px 0 8px 14%;}
 
 @media only screen and (max-width:1200px){
 #lnb{width:100%;}
@@ -139,15 +142,15 @@ body.m_on{overflow:hidden;}
 .sub_menu li.on a{color:#6AB3FF;}
 .sub_menu li a.home_link{display:inline-block;width:24px;height:24px;font-size:1px;line-height:1px;color:transparent;background:url(../images/new_common/home_link.png) center center no-repeat;overflow:hidden;}
 .sub_title{font-family:'Pretendard-Regular';background-color:#f2f5f8;}
-.sub_title .wrap{position:relative;height:140px;background:url(../images/new_common/sub_title.png) center top no-repeat;}
+.sub_title .wrap{position:relative;height:100px;background:url(../images/new_common/sub_title.png) center top no-repeat;}
 .sub_title h3{position:absolute;left:0;top:50%;font-size:3em;color:#003E80;font-weight:600;transform:translateY(-50%);}
 @media only screen and (max-width:1200px){
 .sub_menu ul{height:50px;padding:12px 2% 0;}
-.sub_title .wrap{height:94px;}
-.sub_title h3{position:static;padding:30px 2%;font-size:1.88em;text-align:center;transform:translateY(0);}
+.sub_title .wrap{height:64px;background-position-x:right;}
+.sub_title h3{position:static;padding:15px 2%;font-size:1.88em;text-align: center;transform:translateY(0);}
 }
 @media only screen and (max-width:640px){
-.sub_menu{position:absolute;left:0;top:94px;z-index:11;width:100%;height:50px;border-bottom:none;overflow:hidden;transition:all ease-in-out 500ms;}
+.sub_menu{position:absolute;left:0;top:64px;z-index:11;width:100%;height:50px;border-bottom:none;overflow:hidden;transition:all ease-in-out 500ms;}
 .sub_menu.active{height:auto;}
 .sub_menu ul{height:auto;padding:50px 0 0;}
 .sub_menu li{float:none;}
@@ -157,7 +160,7 @@ body.m_on{overflow:hidden;}
 .sub_menu li.on a{position:absolute;left:0;top:0;width:100%;border-bottom:none;background-color:#003E80;}
 .sub_menu li.on a::after{position:absolute;right:15px;top:50%;display:inline-block;width:20px;height:11px;content:'';background:url(../images/new_common/sub_arrow.png) center center no-repeat;transform:translateY(-50%);}
 .sub_menu.active li.on a::after{transform:rotate(180deg) translateY(50%);}
-.sub_title{margin-bottom:50px;}
+.sub_title{margin-bottom:30px;}
 }
 
 /* 풋터 */
@@ -175,7 +178,7 @@ body.m_on{overflow:hidden;}
 #footer .footer_shortcut .btn{width:200px;height:44px;padding-left:16px;font-size:1em;color:#101010;text-align:left;border:1px solid #BBB;border-radius:2px;background-color:#fff;box-sizing:border-box;}
 #footer .footer_shortcut .btn::after{position:absolute;right:25px;top:50%;display:inline-block;width:14px;height:8px;content:'';background:url(../images/new_common/footer_shortcut.png) center center no-repeat;transform:translateY(-50%);}
 #footer .footer_shortcut.open .btn::after{transform:rotate(180deg) translateY(50%);}
-#footer .footer_shortcut .dropdown-menu{position:absolute;left:0;top:initial;bottom:44px;width:100%;}
+#footer .footer_shortcut .dropdown-menu{position:absolute;left:0;top:initial;bottom:44px;width:100%;font-size:1em;}
 #footer .footer_shortcut .dropdown-menu li > a{display:block;padding:3px 20px;font-size:1em;color:#101010;}
 #footer .footer_shortcut .dropdown-menu li > a:hover,#footer .footer_shortcut .dropdown-menu li > a:focus{font-weight:600;}
 #footer .footer_info{padding:7px 0 7px 124px;margin-top: 16px;font-size:1em;line-height:24px;color:#505050;}
